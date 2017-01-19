@@ -1,6 +1,8 @@
 import Foundation
 
 /*:
+ # Assignment 2
+ 
  The intent of this homework set is to:
  
  1. make sure that you can correctly use important concepts from Swift
@@ -34,10 +36,20 @@ import Foundation
 
  It sounds like a lot I know, but these are parts of the language that you will use
  every day if programming professionally.  There's just no getting around them.
-
+ 
+ Before attempting this homework, you should first read:
+ * the Tour of Swift section of the Apple Swift book
+ * all of the learn-swift examples
+ * the wikipedia page on Conway's Game of Life
+ 
+ You should also keep these readily at hand while doing this assignment.
+ 
  **ALL** answers are to be given in line.  Please do not erase the formatted 
  comments as we will
- be grading by reading through this playground.  You should make changes to this file **ONLY**
+ be grading by reading through this playground.  i.e. go to Editor->Show Rendered Markup 
+ in Xcode and leave rendering on while doing the homework
+ 
+ You should make changes to this file **ONLY**
  in the places specified by the comments in green.  Put your code and or comments ONLY in
  those places!  Where the instructions specify a limit on the length of your answers, please
  be aware that we are serious about this.  Swift is built to facilitate concise coding style.
@@ -135,7 +147,9 @@ struct Cell {
  ## Problem 5:
  In the extension to `Cell` below, provide a return 
  value of type `Position` for the function `neighbors`
- such that `neighbors` returns the coordinates of all neighbor cells of self
+ such that `neighbors` returns the coordinates of all neighbor cells of self.
+ Where by neighbor we mean one of the 8 cells in a grid which touches the current 
+ cell.
  
  Your answer MUST:
  1. consist of a return statement followed by the creation
@@ -177,10 +191,9 @@ extension Cell {
  
  ## Problem 7:
  Equip Grid with an initializer which:
- 1. Accepts two `Int` arguments named `rows` and `cols`
- 1. Allows `rows` and `cols` to be implicitly named
  1. Initializes the `rows` and `cols` properties from the arguments
- 1. initializes the `cells` array using:
+ 1. initializes the `cells` array to be an array of length `rows` with 
+ each entry in that array being an array of type `[Cell]` of length `cols` by using:
  
  `    [[Cell]](repeatElement([Cell](repeatElement ...))`
  
@@ -245,12 +258,12 @@ func map2<T>(_ rows: Int, _ cols: Int, transform: (Int, Int) -> T) -> [[T]] {
 }
 /*:
  ## Problem 9:
- In the extension to `Grid` immediately below, write 
+ In the extension to `Grid` immediately below, write
  precisely one line of code in the function `positionCells`
  which sets the position of the cell specified
  by row and col to its correct value.
  
- **HINT** you are setting the position property of a value 
+ **HINT** you are setting the position property of a value
  in `cells` which is of type `Position`
  
  More than one line of code will result in zero credit
@@ -294,27 +307,27 @@ extension Grid {
 
 /*:
  ## Problem 11:
- I am providing the following function, reduce2. Answer the following questions 
+ I am providing the following function, reduce2. Answer the following questions
  with **AT MOST** one sentence each.
  1. what do you expect the combine argument to do
  */
 // ** Your Problem 11.1 answer goes here **
 /*
-
+ 
  */
 /*:
  2. what is the return type of reduce2
  */
 // ** Your Problem 11.2 answer goes here **
 /*
-
+ 
  */
 /*:
  3. why is there no T parameter here as in map2 above
  */
 // ** Your Problem 11.3 answer goes here **
 /*
-
+ 
  */
 
 // A function which is useful for counting things in an array of arrays of things
@@ -327,13 +340,13 @@ func reduce2(_ rows: Int, _ cols: Int, combine: (Int, Int, Int) -> Int) -> Int  
 }
 /*:
  ## Problem 12:
- In the extension to Grid below: 
+ In the extension to Grid below:
  
  1. write precisely one line of code which:
  1. uses the ternary operator ?
  1. increments and return total if the state of the referenced
  cell is alive, otherwise return only total
-
+ 
  **HINT** you are returning a running count of living neighbors
  
  Failure to follow all rules will result in zero credit
@@ -350,11 +363,12 @@ extension Grid {
 
 /*:
  ## Problem 13:
-Uncomment the 4 lines of working code below.
-If your code above compiles and runs the value returned from grid.numLiving 
- should be approximately 33. If it is not debug your code above.  
+ Uncomment the 4 lines of working code below.
+ If your code above compiles and runs the value returned from grid.numLiving
+ should be approximately 33. If it is not debug your code above.
  
- Explain why it should be ~33 in a **one sentence** comment in the location shown below.
+ Explain why it should be approximately but not necessarily exactly 33
+ in a **one sentence** comment in the location shown below.
  */
 
 // Code to initialize a 10x10 grid, set up every cell in the grid
@@ -366,24 +380,24 @@ If your code above compiles and runs the value returned from grid.numLiving
 
 // ** Your Problem 13 comment goes here! **
 /*
-
+ 
  */
 
 /*:
  ## Problem 14:
  In the extension to `Grid` below, equip `Grid` with a subscript which allows you to
  get and set the values of the a cell of type `Cell` in the following manner:
-```
+ ```
  aGrid[1,2] = aCell
  aGrid[2,3].state = .born
  let someCell = aGrid[4,7]
  let somePosition = aGrid[2,5].position
-```
+ ```
  Your solution MUST:
  1. implement both a `get` and a `set`
  1. in each case consist **ONLY** of a guard-else statement followed by a single line of code
  1. use the guard statement in both the `get` and the `set` to ensure that row and col
- are between 0 and rows or cols respectively 
+ are between 0 and rows or cols respectively
  1. use the guard statement in set to ensure that the new value is not nil
  1. be no more than 4 lines for the `get` and 4 lines for the `set`
  */
@@ -410,28 +424,28 @@ extension Grid {
  */
 // Problem 15.1 answer goes here
 /*
-
+ 
  */
 /*:
  2. what the type of `self[row,col]`?
  */
 // Problem 15.2 answer goes here
 /*
-
+ 
  */
 /*:
  3. why those two types are different?
  */
 // Problem 15.3 comment goes here
 /*
-
+ 
  */
 /*:
  4. what under what circumstances the else will be executed?
  */
 // Problem 15.4 comment goes here
 /*
-
+ 
  */
 /*:
  ## Problem 16:
@@ -439,11 +453,11 @@ extension Grid {
  in the following extension returns in the context of Conway's Game of Life.
  
  Your answer may consist of **AT MOST** 2 sentences
-*/
+ */
 
 // Problem 16 comment goes here
 /*
-
+ 
  */
 
 /*:
@@ -466,7 +480,7 @@ extension Grid {
  ## Problem 18:
  In the location shown below, write precisely ONE line of code which returns
  the correct value for computing the number of living neighbors
- of cell.  
+ of cell.
  
  Your answer must use:
  1. the ternary operator,
@@ -474,12 +488,13 @@ extension Grid {
  1. the state of neighborCell
  
  Failure to follow all rules will result in zero credit
-*/
+ */
 // An extension to Grid which counts the number of living neighbors for the
 // cell in position row, col
 extension Grid {
     func numLivingNeighbors (_ row: Int, _ col: Int) -> Int {
-        guard let cell = self[row,col] else { return 0 }
+        guard let cell = self[row,col]
+            else { return 0 }
         return cell
             .neighbors(maxRows: rows, maxCols: cols)
             .reduce(0) {
@@ -487,7 +502,7 @@ extension Grid {
                 // ** Problem 18 code goes here!  replace the following 2 lines **
                 neighborCell
                 return $0
-            }
+        }
     }
 }
 
@@ -543,7 +558,7 @@ extension Grid {
 }
 /*:
  ## Problem 21:
- Explain what nextGrid variable immediately above represents 
+ Explain what nextGrid variable immediately above represents
  in the context of Conway's Game of Life
  
  Your answer may consist of **ONLY ONE** sentence.
@@ -551,14 +566,14 @@ extension Grid {
 
 // ** Your Problem 21 comment goes here! **
 /*
-
+ 
  */
 /*:
-## Problem 22:
- Uncomment the following 2 lines of code. 
+ ## Problem 22:
+ Uncomment the following 2 lines of code.
  Verify that the number living is still in the neighborhood of 33
  If it is not please debug all your code
-*/
+ */
 //grid = grid.next()
 //grid.numLiving
 
