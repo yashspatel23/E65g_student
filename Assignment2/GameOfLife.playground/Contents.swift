@@ -63,6 +63,11 @@ import Foundation
  with Conway's Game of Life.  We discussed this extensively in class, but
  you may want to review: [The Wikipedia page](https://en.wikipedia.org/wiki/Conway's_Game_of_Life)
  
+ You are **strongly** advised to work the problems in order.  And as you progress to make sure that
+ the playground stays in a state where it compiles and runs.  An excellent practice to get into
+ is to do frequent commits of your work so that you don't lose it and can roll back to previous 
+ versions if you make a mistake.  Xcode will help you with this.
+ 
  ## Problem 1:  
  Problem 1 has already been worked for you as an example.  Everyone gets 5 free points!
  
@@ -92,7 +97,8 @@ typealias Position = (row: Int, col: Int)
  */
 
 enum CellState {
-// ** Your Problem 2 code goes here! Replace the contents of CellState **
+    // ** Your Problem 2 code goes here! Replace the contents of CellState **
+    //  This shell code is here so that at all times the playground compiles and runs
     case empty
     
     var isAlive: Bool {
@@ -106,7 +112,7 @@ enum CellState {
  
  ## Problem 3:
  In a comment here, explain what the contents
- of the variable named `offsets` in the struct below represent.
+ of the variable named `offsets` in the struct `Cell` below represent.
  **Hint:** they are relative to the missing entry in the center and
  have to do with the rules to Conway's Game of Life.
  
@@ -166,6 +172,10 @@ struct Cell {
  5. be no longer than 4 readable lines long
  
  Failure to follow all rules will result in zero credit
+ 
+ **HINT** Note that the code you are being asked to write is inside of a map
+ function operating over the `offsets` array and that it returns a position
+ which represents a neighbor of the given cell which has its own position.
  */
 
 // An extension of Cell to add a function for computing the positions
@@ -273,7 +283,8 @@ extension Grid {
     func positionCells() -> Self {
         map2(self.rows, self.cols) { row, col in
             // ** Your Problem 9 code goes here! replace the following line
-            return
+            // this line is here only to make sure that the playground compiles
+            return cells[row][col]
         }
         return self
     }
@@ -291,6 +302,7 @@ extension Grid {
  Assign the state using the ternary operator `?`
  
  **HINT** you are setting the `state` property of a value in `cells` to a `CellState`
+ to `alive` or `empty` based on a roll of of a 3-sided die
  
  Failure to follow all rules will result in zero credit
  */
@@ -299,7 +311,8 @@ extension Grid {
     func randomizeCells() -> Self {
         map2(self.rows, self.cols) { row, col in
             // ** Your Problem 10 code goes here.  replace the following line **
-            return
+            // this line is here only to make sure that the playground compiles
+            return cells[row][col]
         }
         return self
     }
@@ -344,8 +357,7 @@ func reduce2(_ rows: Int, _ cols: Int, combine: (Int, Int, Int) -> Int) -> Int  
  
  1. write precisely one line of code which:
  1. uses the ternary operator ?
- 1. increments and return total if the state of the referenced
- cell is alive, otherwise return only total
+ 1. returns `total + 1` if the state of the referenced cell is `alive`, otherwise return `total`
  
  **HINT** you are returning a running count of living neighbors
  
