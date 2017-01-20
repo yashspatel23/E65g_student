@@ -22,7 +22,7 @@
 		FBAD2DD11E2BDE55008207C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBAD2DD41E2BDE55008207C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FBAD2DD61E2BDE55008207C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FBAD2E7E1E2E56D1008207C0 /* GameOfLife.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = GameOfLife.playground; sourceTree = "<group>"; };
+		FBAD2E7E1E2E56D1008207C0 /* Assignment2.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Assignment2.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,7 +39,7 @@
 		FBAD2DBE1E2BDE55008207C0 = {
 			isa = PBXGroup;
 			children = (
-				FBAD2E7E1E2E56D1008207C0 /* GameOfLife.playground */,
+				FBAD2E7E1E2E56D1008207C0 /* Assignment2.playground */,
 				FBAD2DC91E2BDE55008207C0 /* Assignment2 */,
 				FBAD2DC81E2BDE55008207C0 /* Products */,
 			);
