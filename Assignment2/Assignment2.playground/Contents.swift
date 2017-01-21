@@ -38,8 +38,8 @@ import Foundation
  every day if programming professionally.  There's just no getting around them.
  
  Before attempting this homework, you should first read:
- * the Tour of Swift section of the Apple Swift book
- * all of the learn-swift examples
+ * the Swift Tour section of the Apple Swift book
+ * all of the learn-swift examples, cross-referencing back to the book as you go
  * the wikipedia page on Conway's Game of Life
  
  You should also keep these readily at hand while doing this assignment.
@@ -67,6 +67,17 @@ import Foundation
  the playground stays in a state where it compiles and runs.  An excellent practice to get into
  is to do frequent commits of your work so that you don't lose it and can roll back to previous 
  versions if you make a mistake.  Xcode will help you with this.
+ 
+ ## Overall requirements:
+ 1. Your submitted playground must have zero errors and zero warnings
+ 1. It must successfully run to completion, generating the words The End at the end
+ 1. It must produce reasonable numbers for Conway's Game of Life, i.e. after a couple of 
+ iterations, the game should have about 33 living cells.  It should NOT have zero or 100.
+ 1. You MUST do the work yourself, do not talk together on this one, any questions should be addressed to the discussion boards so that everyone may see them and the instructors may determine if they are appropriate
+ 
+ The reason for these requirements are that if you do not understand how to use Swift at this level you will not 
+ be able to do the other assignments.  It is VITAL that we get you the help you need if you are 
+ having difficulties.
  
  ## Problem 1:  
  Problem 1 has already been worked for you as an example.  Everyone gets 5 free points!
@@ -107,27 +118,8 @@ enum CellState {
 }
 
 /*:
- The next 2 problems have to do with the struct `Cell`, a template for which is
- defined below
- 
  ## Problem 3:
- In a comment here, explain what the contents
- of the variable named `offsets` in the struct `Cell` below represent.
- **Hint:** they are relative to the missing entry in the center and
- have to do with the rules to Conway's Game of Life.
- 
- **Your answer may be no more than one sentence.**
- 
-* learn-swift 10
- */
-
-// ** Your Problem 3 comment goes here! **
-/*
-
- */
-
-/*:
- ## Problem 4:
+ In the struct Cell below:
  1. Initialize `position` to `(0,0)` and `state` to `empty`,
  2. allow Swift to infer the two types, i.e. **do not** put `:Type` on the
  left hand side of the equals sign.
@@ -138,124 +130,42 @@ enum CellState {
 
 // A struct representing a Cell in Conway's Game of Life
 struct Cell {
-    static let offsets: [Position] = [
-        (row: -1, col:  1), (row: 0, col:  1), (row: 1, col:  1),
-        (row: -1, col:  0),                    (row: 1, col:  0),
-        (row: -1, col: -1), (row: 0, col: -1), (row: 1, col: -1)
-    ]
-
-    // ** Your Problem 4 code goes here! replace the following two lines **
+    // ** Your Problem 3 code goes here! replace the following two lines **
     var position: Position
     var state: CellState
 }
 
 /*:
- ## Problem 5:
- In the extension to `Cell` below, provide a return 
- value of type `Position` for the function `neighbors`
- such that `neighbors` returns the coordinates of all neighbor cells of self.
- Where by neighbor we mean one of the 8 cells in a grid which touches the current 
- cell.
- 
- Your answer MUST:
- 1. consist of a return statement followed by the creation
- of a single Position object,
- 1. implement the "wrap-around" rules of Conway's Game of Life
- 1. take advantage of the following facts:
- 
-`            0 <= (position.row + offsetRow    + maxRows) % maxRows < maxRows`
- 
-`            0 <= (position.col + offsetColumn + maxCols) % maxCols < maxCols`
-
- 
- 4. make use of `$0` as passed into map
- 5. be no longer than 4 readable lines long
- 
- Failure to follow all rules will result in zero credit
- 
- **HINT** Note that the code you are being asked to write is inside of a map
- function operating over the `offsets` array and that it returns a position
- which represents a neighbor of the given cell which has its own position.
- */
-
-// An extension of Cell to add a function for computing the positions
-// of the 8 neighboring cells of a given cell
-extension Cell {
-    // For the given cell in Conways' GoL, find all 8 of its neighbors, 
-    // "wrapping around" a maximum number of rows and columns
-    func neighbors(maxRows: Int, maxCols: Int) -> [Position] {
-        return Cell.offsets.map {
-            // ** Your Problem 5 Code goes here! replace the following line **
-            return Position(row: $0, col: $1)
-        }
-    }
-}
-
-/*:
- Problems 6 and 7 refer to the class `Grid` which I provide a template for below.
- 
- ## Problem 6:
- The class `Grid` has been provided with 3 variables `rows`, `cols` and `cells`:
- 1. Initialize `rows` of type `Int` to be 10 by default
- 1. Intialize `cols` of type `Int` to be 10 by default
- 
- ## Problem 7:
- Equip Grid with an initializer which:
- 1. Initializes the `rows` and `cols` properties from the arguments
- 1. initializes the `cells` array to be an array of length `rows` with 
- each entry in that array being an array of type `[Cell]` of length `cols` by using:
- 
- `    [[Cell]](repeatElement([Cell](repeatElement ...))`
- 
- 1. Uses the default values of the Cell struct in initialization
- 1. is no more than 10 readable lines long
- 
- Failure to follow all rules will result in zero credit
- */
-
-// A grid of cells representing the world of Conway's GoL
-class Grid {
-    // ** Your Problem 6 code goes here! **
-    var rows: Int = 0
-    var cols: Int = 0
-    var cells: [[Cell]] = [[Cell]]()
-    
-    required init(_ rows: Int, _ cols: Int) {
-        // ** Your Problem 7 code goes here! **
-    }
-}
-
-/*:
- ## Problem 8: 
+ ## Problem 4:
  I am providing the following function, `map2` immediately below.
  
  Answer the following questions on `map2` in the places shown.  (Your answers may consist of **AT MOST** once sentence):
- 1. what do the _ characters do
+ 1. what do the `_` characters do
  */
-// ** Your Problem 8.1 answer goes here **
+// ** Your Problem 4.1 answer goes here **
 /*
-
+ 
  */
 /*:
- 2. what is the type of the transform variable
+ 2. what is the type of the `transform` variable
  */
-// ** Your Problem 8.2 answer goes here **
+// ** Your Problem 4.2 answer goes here **
 /*
-
+ 
  */
 /*:
- 3. what is the return type of map2
+ 3. what is the return type of `map2`
  */
-// ** Your Problem 8.3 answer goes here **
+// ** Your Problem 4.3 answer goes here **
 /*
-
+ 
  */
 /*:
- 4. what is T in this declaration
+ 4. what is `T` in this declaration
  */
-// ** Your Problem 8.4 answer goes here **
+// ** Your Problem 4.4 answer goes here **
 /*
-
+ 
  */
 // A function which is like the standard map function but
 // which will operate only on a two dimensional array
@@ -266,33 +176,51 @@ func map2<T>(_ rows: Int, _ cols: Int, transform: (Int, Int) -> T) -> [[T]] {
         }
     }
 }
-/*:
- ## Problem 9:
- In the extension to `Grid` immediately below, write
- precisely one line of code in the function `positionCells`
- which sets the position of the cell specified
- by row and col to its correct value.
- 
- **HINT** you are setting the position property of a value
- in `cells` which is of type `Position`
- 
- More than one line of code will result in zero credit
- */
-// An extension to Grid which sets each cell to 'know' its position within the grid
-extension Grid {
-    func positionCells() -> Self {
-        map2(self.rows, self.cols) { row, col in
-            // ** Your Problem 9 code goes here! replace the following line
-            // this line is here only to make sure that the playground compiles
-            return cells[row][col]
-        }
-        return self
-    }
-}
 
 /*:
- ## Problem 10:
- Write precisely one line of code which sets the state of the cell specified
+ The following 4 problems apply to the struct Grid shown below.
+ 
+ ## Problem 5:
+ In a comment here, explain what the contents
+ of the variable named `offsets` in the struct `Grid` below represent.
+ 
+ **Hint:** they are relative to the missing entry in the center and
+ have to do with the rules to Conway's Game of Life.
+ 
+ **Your answer may be no more than one sentence.**
+ 
+ * learn-swift 10
+ */
+// ** Your Problem 5 comment goes here! **
+/*
+ 
+ */
+
+/*:
+ ## Problem 6:
+ The struct `Grid` has been provided with 3 variables `rows`, `cols` and `cells`:
+ 1. Initialize `rows` of type `Int` to be 10 by default
+ 1. Intialize `cols` of type `Int` to be 10 by default
+ 
+ ## Problem 7:
+ In the location shown below, equip Grid with an initializer which:
+ 1. Initializes the `rows` and `cols` properties from the arguments
+ 1. initializes the `cells` array to be an array of length `rows` with
+ each entry in that array being an array of type `[Cell]` of length `cols` by using:
+ 
+ `    [[Cell]](repeatElement([Cell](repeatElement ...))`
+ 
+ 1. Uses the default values of the Cell struct in initialization
+ 1. is no more than 10 readable lines long
+ 
+ Failure to follow all rules will result in zero credit
+ 
+ ## Problem 8:
+ Write precisely two lines of code in the location shown below
+ 
+ 1. The first line of code sets the position value of the cell specified by row and col
+ to be (row, col)
+ 1. the second line of code which sets the state of each cell specified
  by row and col to to be `alive` with probability 1/3 and `empty` otherwise
  
  Use the following expression to determine if the `state` should be .alive or empty:
@@ -301,20 +229,88 @@ extension Grid {
  
  Assign the state using the ternary operator `?`
  
- **HINT** you are setting the `state` property of a value in `cells` to a `CellState`
- to `alive` or `empty` based on a roll of of a 3-sided die
+ **HINT** you are setting the `position` and `state` properties of a value in `cells` to their appropriate values
  
  Failure to follow all rules will result in zero credit
  */
-// An extension to grid which will randomly assign each cell a value of alive or empty
-extension Grid {
-    func randomizeCells() -> Self {
-        map2(self.rows, self.cols) { row, col in
-            // ** Your Problem 10 code goes here.  replace the following line **
-            // this line is here only to make sure that the playground compiles
-            return cells[row][col]
+
+// A grid of cells representing the world of Conway's GoL
+struct Grid {
+    static let offsets: [Position] = [
+        (row: -1, col:  1), (row: 0, col:  1), (row: 1, col:  1),
+        (row: -1, col:  0),                    (row: 1, col:  0),
+        (row: -1, col: -1), (row: 0, col: -1), (row: 1, col: -1)
+    ]
+    
+    // ** Your Problem 6 code goes here! Change the following two lines **
+    var rows: Int = 0
+    var cols: Int = 0
+    var cells: [[Cell]] = [[Cell]]()
+    
+    init(_ rows: Int, _ cols: Int) {
+        // ** Your Problem 7 code goes here! **
+        map2(rows, cols) { row, col in
+            // ** Your Problem 8 code goes here! **
         }
-        return self
+    }
+}
+
+/*:
+ The next two problems apply to the extension to `Grid` immediately below.
+ 
+ ## Problem 9:
+ In the extension to `Grid` below, provide a return
+ value of type `Position` for the function `neighbors`
+ such that `neighbors` returns the coordinates of all neighbor cells of self.
+ Where by neighbor we mean one of the 8 cells in a grid which touches the current
+ cell.
+ 
+ Your answer MUST:
+ 1. consist of a return statement followed by the creation
+ of a single Position object,
+ 1. implement the "wrap-around" rules of Conway's Game of Life
+ 1. take advantage of the following facts:
+ 
+ `            0 <= (position.row + offsetRow    + maxRows) % maxRows < maxRows`
+ 
+ `            0 <= (position.col + offsetColumn + maxCols) % maxCols < maxCols`
+ 
+ 
+ 4. make use of `$0` as passed into map
+ 5. be no longer than 4 readable lines long
+ 
+ Failure to follow all rules will result in zero credit
+ 
+ **HINT** Note that the code you are being asked to write is inside of a map
+ function operating over the `offsets` array and that it returns a position
+ which represents a neighbor of the given cell which has its own position.
+ 
+ ## Problem 10:
+ In the extension to Grid below, examine the `neighbors` call.
+ 1. Explain in one sentence when you would use the word `of` in relation to this function
+ */
+// ** your problem 10.1 answer goes here.
+/*
+ 
+ */
+/*:
+ 2. Explain in one sentence when you would use the word `cell` in relation to this function
+ */
+// ** your problem 10.2 answer goes here.
+/*
+ 
+ */
+
+// An extension of Grid to add a function for computing the positions
+// of the 8 neighboring cells of a given cell
+extension Grid {
+    // For the given cell in Conways' GoL, find all 8 of its neighbors,
+    // "wrapping around" a maximum number of rows and columns
+    func neighbors(of cell: Cell) -> [Position] {
+        return Grid.offsets.map {
+            // ** Your Problem 9 Code goes here! replace the following line **
+            return Position(row: $0, col: $1)
+        }
     }
 }
 
@@ -375,7 +371,7 @@ extension Grid {
 
 /*:
  ## Problem 13:
- Uncomment the 4 lines of working code below.
+ Uncomment the 2 lines of working code below.
  If your code above compiles and runs the value returned from grid.numLiving
  should be approximately 33. If it is not debug your code above.
  
@@ -383,17 +379,15 @@ extension Grid {
  in a **one sentence** comment in the location shown below.
  */
 
-// Code to initialize a 10x10 grid, set up every cell in the grid
-// and randomly turn each cell on or off.  Uncomment following 4 lines
-//var grid = Grid(10, 10)
-//    .positionCells()
-//    .randomizeCells()
-//grid.numLiving
-
 // ** Your Problem 13 comment goes here! **
 /*
  
  */
+
+// Code to initialize a 10x10 grid and set up every cell in the grid
+// and randomly turn each cell on or off.  Uncomment following 2 lines
+//var grid = Grid(10, 10)
+//grid.numLiving
 
 /*:
  ## Problem 14:
@@ -431,7 +425,7 @@ extension Grid {
  The following 4 problems all refer to the extension to `Grid` immediately below
  
  ## Problem 15:
- Answer the following questions about numLivingNeighbors with **AT MOST ONE SENTENCE**.
+ Answer the following questions about livingNeighbors(of:) with **AT MOST ONE SENTENCE**.
  1. what is the type of `cell`?
  */
 // Problem 15.1 answer goes here
@@ -504,11 +498,9 @@ extension Grid {
 // An extension to Grid which counts the number of living neighbors for the
 // cell in position row, col
 extension Grid {
-    func numLivingNeighbors (_ row: Int, _ col: Int) -> Int {
-        guard let cell = self[row,col]
-            else { return 0 }
-        return cell
-            .neighbors(maxRows: rows, maxCols: cols)
+    func livingNeighbors(of cell: Cell) -> Int {
+        return self
+            .neighbors(of: cell)
             .reduce(0) {
                 guard let neighborCell = self[$1.row, $1.col] else { return $0 }
                 // ** Problem 18 code goes here!  replace the following 2 lines **
@@ -529,7 +521,7 @@ extension Grid {
  * consist solely of one guard-let statement followed by one switch statement
  * use the guard-let to create a local variable `cell` from `self[row,col]`
  * guard against `self[row,col]` being nil otherwise return `empty`
- * use a `switch` statement on `numLivingNeighbors(row,col)` from above to determine
+ * use a `switch` statement on `livingNeighbors(of:)` from above to determine
  the value to return
  * the switch statement should consist of a single case and a default statement
  * use the `isAlive` property of `CellState` from above in
@@ -545,7 +537,7 @@ extension Grid {
 // An extension to Grid to implement Conway's rules for transitioning a cell
 // from one state of the game to the next
 extension Grid {
-    func nextState(_ row: Int, _ col: Int) -> CellState {
+    func nextState(of cell: Cell) -> CellState {
         // ** Problem 19 code goes here! Replace the following line **
         return .empty
     }
@@ -561,7 +553,7 @@ extension Grid {
 // An extension to grid to jump to the next state of Conway's GoL
 extension Grid {
     func next() -> Grid {
-        let nextGrid = Grid(rows, cols).positionCells()
+        let nextGrid = Grid(rows, cols)
         map2(self.rows, self.cols) { (row, col)  in
             // ** Problem 20 code goes here! **
         }
