@@ -221,13 +221,7 @@ func map2<T>(_ rows: Int, _ cols: Int, transform: (Int, Int) -> T) -> [[T]] {
  1. The first line of code sets the position value of the cell specified by row and col
  to be (row, col)
  1. the second line of code which sets the state of each cell specified
- by row and col to to be `alive` with probability 1/3 and `empty` otherwise
- 
- Use the following expression to determine if the `state` should be .alive or empty:
- 
- `     arc4random_uniform(3) == 2`
- 
- Assign the state using the ternary operator `?`
+ by row and col to the value specificied by `cellInitializer`.
  
  **HINT** you are setting the `position` and `state` properties of a value in `cells` to their appropriate values
  
@@ -247,7 +241,7 @@ struct Grid {
     var cols: Int = 0
     var cells: [[Cell]] = [[Cell]]()
     
-    init(_ rows: Int, _ cols: Int) {
+    init(_ rows: Int, _ cols: Int, cellInitializer: (Int, Int) -> CellState = { _,_ in .empty } ) {
         // ** Your Problem 7 code goes here! **
         map2(rows, cols) { row, col in
             // ** Your Problem 8 code goes here! **
@@ -371,23 +365,39 @@ extension Grid {
 
 /*:
  ## Problem 13:
- Uncomment the 2 lines of working code below.
+ Lets test your work so far.
+ 
+ Uncomment the lines of working code marked immediately below. Replace the cellInitializer with a closure which
+ causes each cell to be `alive` with probability 1/3 and `empty` otherwise
+ 
+ Use the following expression to determine if the `state` should be .alive or empty:
+ 
+ `     arc4random_uniform(3) == 2`
+ 
+ Assign the state using the ternary operator `?`
+
  If your code above compiles and runs the value returned from grid.numLiving
  should be approximately 33. If it is not debug your code above.
- 
  Explain why it should be approximately but not necessarily exactly 33
  in a **one sentence** comment in the location shown below.
+ 
+ **Hint:** This example passes the initializer in trailing closure syntax.  You will want to set the state of 
+ a cell using code similar to what you've already done
  */
+// Code to initialize a 10x10 grid, set up every cell in the grid
+// and randomly turn each cell on or off.  Uncomment following 4 lines
+// and replace `.empty` with your one line of code
+//var grid = Grid(10, 10) { row, col in 
+//   // ** Your Problem 13 code goes here! **
+//   .empty
+//}
+//grid.numLiving
 
 // ** Your Problem 13 comment goes here! **
 /*
  
  */
 
-// Code to initialize a 10x10 grid and set up every cell in the grid
-// and randomly turn each cell on or off.  Uncomment following 2 lines
-//var grid = Grid(10, 10)
-//grid.numLiving
 
 /*:
  ## Problem 14:
@@ -584,5 +594,30 @@ extension Grid {
 /*
  It works!
  */
+
+
+/*:
+ ## For Fun
+ Once you have everything above working, uncomment and think about the following lines of code
+ */
+//func gliderInitializer(row: Int, col: Int) -> CellState {
+//    switch (row, col) {
+//    case (0, 1), (1, 2), (2, 0), (2, 1), (2, 2): return .alive
+//    default: return .empty
+//    }
+//}
+//
+//grid = Grid(10, 10, cellInitializer: gliderInitializer)
+//grid.numLiving
+//grid = grid.next()
+//grid.numLiving
+//grid = grid.next()
+//grid.numLiving
+//grid = grid.next()
+//grid.numLiving
+//grid = grid.next()
+//grid.numLiving
+//grid = grid.next()
+//grid.numLiving
 
 let theEnd = "The End"
