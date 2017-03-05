@@ -1,6 +1,3 @@
-//
-//  Grid.swift
-//
 import Foundation
 
 public typealias Position = (row: Int, col: Int)
@@ -46,7 +43,7 @@ public struct Grid {
             col: ((position.col % cols) + cols) % cols
         )
     }
-    
+
     public subscript (pos: Position) -> Cell {
         get {
             let pos = normalize(position: pos)
@@ -174,10 +171,24 @@ extension Grid: Sequence {
     }
 }
 
+
+/*
+ Testing
+ */
+var grid = Grid(10, 10) { _,_ in arc4random_uniform(3) == 2 ? .alive : .empty }
+print ("\(grid.living.count)\n\n\(grid.description)\n\n\n\n\n\n")
+
 func gliderInitializer(row: Int, col: Int) -> CellState {
     switch (row, col) {
     case (0, 1), (1, 2), (2, 0), (2, 1), (2, 2): return .alive
     default: return .empty
     }
 }
+
+grid = Grid(5, 5, cellInitializer: gliderInitializer)
+print (grid.description)
+
+for nextGrid in grid { print ("\(nextGrid.description)\n") }
+
+let theEnd = "The End"
 
