@@ -20,6 +20,7 @@
 		FB6A68541E6CA1CA0082EFF6 /* Assignment3.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Assignment3.rtf; sourceTree = "<group>"; };
 		FB6A68561E6CA3040082EFF6 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		FB6A68581E6CAB270082EFF6 /* NewGrid.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = NewGrid.playground; path = Assignment3/NewGrid.playground; sourceTree = "<group>"; };
+		FB6A68591E6CB60E0082EFF6 /* Assignment2Completed.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Assignment2Completed.playground; sourceTree = "<group>"; };
 		FBAD2DE51E2BE34F008207C0 /* Assignment3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBAD2DE81E2BE34F008207C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBAD2DEA1E2BE34F008207C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				FB6A68541E6CA1CA0082EFF6 /* Assignment3.rtf */,
+				FB6A68591E6CB60E0082EFF6 /* Assignment2Completed.playground */,
 				FB6A68581E6CAB270082EFF6 /* NewGrid.playground */,
 				FBAD2DE71E2BE34F008207C0 /* Assignment3 */,
 				FBAD2DE61E2BE34F008207C0 /* Products */,

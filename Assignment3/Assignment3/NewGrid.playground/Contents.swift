@@ -20,6 +20,7 @@ public struct Cell {
 
 public struct Grid {
     private var _cells: [[Cell]]
+    
     public var rows: Int { return _cells.count }
     public var cols: Int { return _cells[0].count }
     public var positions: [Position] {
@@ -29,11 +30,11 @@ public struct Grid {
             .flatMap { $0 }
     }
     
-    public init(_ rows: Int, _ cols: Int, cellInitializer: (Int, Int) -> CellState = { _, _ in .empty } ) {
+    public init(_ rows: Int, _ cols: Int, cellInitializer: (Position) -> CellState = { _, _ in .empty } ) {
         _cells = [[Cell]]( repeatElement( [Cell](repeatElement(Cell(), count: rows)), count: cols) )
         positions.forEach {
-            self[$0].position = Position(row: $0.row, col: $0.col)
-            self[$0].state    = cellInitializer($0.row, $0.col)
+            self[$0].position = $0
+            self[$0].state    = cellInitializer($0)
         }
     }
     
@@ -73,10 +74,8 @@ public struct Grid {
     private func nextState(of cell: Cell) -> CellState {
         switch neighbors(of: cell).filter({ $0.state.isAlive }).count {
         case 2 where cell.state.isAlive,
-             3:
-            return cell.state.isAlive ? .alive : .born
-        default:
-            return cell.state.isAlive ? .died  : .empty
+             3: return cell.state.isAlive ? .alive : .born
+        default: return cell.state.isAlive ? .died  : .empty
         }
     }
     
