@@ -104,7 +104,7 @@ public extension Grid {
         }
     }
     public var living: [Position] { return positions.flatMap { return  self[$0].state.isAlive   ? $0 : nil } }
-    public var dead  : [Position] { return positions.flatMap { return !self[$0].state.isAlive  ? $0 : nil } }
+    public var dead  : [Position] { return positions.flatMap { return !self[$0].state.isAlive   ? $0 : nil } }
     public var alive : [Position] { return positions.flatMap { return  self[$0].state == .alive ? $0 : nil } }
     public var born  : [Position] { return positions.flatMap { return  self[$0].state == .born  ? $0 : nil } }
     public var died  : [Position] { return positions.flatMap { return  self[$0].state == .died  ? $0 : nil } }
