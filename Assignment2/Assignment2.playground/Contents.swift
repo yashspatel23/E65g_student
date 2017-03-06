@@ -344,7 +344,7 @@ extension Grid {
     var numLiving: Int {
         return reduce2(self.rows, self.cols) { total, row, col in
             // ** Replace the following line with your Problem 12 code
-            return cells[row][col].state == .alive ? total + 1 : total
+            return self.cells[row][col].state.isAlive ? total + 1 : total
         }
     }
 }
@@ -503,7 +503,7 @@ extension Grid {
             .reduce(0) {
                 guard let neighborCell = self[$1.row, $1.col] else { return $0 }
                 // ** Problem 18 code goes here!  replace the following 2 lines **
-                return neighborCell.state.isAlive ? $0 + 1 : 0
+                return neighborCell.state.isAlive ? $0 + 1 : $0
         }
     }
 }
@@ -535,7 +535,7 @@ extension Grid {
         // ** Problem 19 code goes here! Replace the following line **
         switch livingNeighbors(of: cell) {
         case let x where x > 1:
-            return (cell.state.isAlive && x == 2) || x > 2 ? .alive : .empty
+            return (cell.state.isAlive && x == 2) || x == 3 ? .alive : .empty
         default:
             return .empty
         }
@@ -554,7 +554,7 @@ extension Grid {
         var nextGrid = Grid(rows, cols)
         map2(self.rows, self.cols) { (row, col)  in
             // ** Problem 20 code goes here! **
-            nextGrid.cells[row][col].state = nextState(of: cells[row][col])
+            nextGrid.cells[row][col].state = nextState(of: self.cells[row][col])
         }
         return nextGrid
     }
