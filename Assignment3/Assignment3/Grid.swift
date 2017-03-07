@@ -15,7 +15,7 @@ public func normalize(position: Position, to modulus: Position) -> Position {
     )
 }
 
-// Provide a sequence of all positions
+// Provide a sequence of all positions in a range
 public func positionSequence (from: Position, to: Position) -> PositionSequence {
     return (from.row ..< to.row)
         .map { row in zip( [Int](repeating: row, count: to.col - from.col), from.col ..< to.col ) }

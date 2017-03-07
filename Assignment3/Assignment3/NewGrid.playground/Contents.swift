@@ -3,6 +3,7 @@ import Foundation
 public typealias Position = (row: Int, col: Int)
 public typealias PositionSequence = [Position]
 
+// Implement the wrap around rules
 public func normalize(position: Position, to modulus: Position) -> Position {
     let modRows = modulus.row, modCols = modulus.col
     return Position(
@@ -11,6 +12,7 @@ public func normalize(position: Position, to modulus: Position) -> Position {
     )
 }
 
+// Provide a sequence of all positions in a range
 public func positionSequence (from: Position, to: Position) -> PositionSequence {
     return (from.row ..< to.row)
         .map { row in zip( [Int](repeating: row, count: to.col - from.col), from.col ..< to.col ) }
@@ -37,13 +39,16 @@ public struct Grid {
     private var _cells: [[Cell]]
     fileprivate var modulus: Position { return Position(_cells.count, _cells[0].count) }
     
+    // Get and Set cell states by position
     public subscript (pos: Position) -> CellState {
         get { let pos = normalize(position: pos, to: modulus); return _cells[pos.row][pos.col].state }
         set { let pos = normalize(position: pos, to: modulus); _cells[pos.row][pos.col].state = newValue }
     }
     
+    // Allow access to the sequence of positions
     public let positions: PositionSequence
     
+    // Initialize _cells and positions
     public init(_ rows: Int, _ cols: Int, cellInitializer: (Position) -> CellState = { _, _ in .empty } ) {
         _cells = [[Cell]]( repeatElement( [Cell](repeatElement(Cell(), count: rows)), count: cols) )
         positions = positionSequence(from: Position(0,0), to: Position(rows, cols))
@@ -73,6 +78,7 @@ public struct Grid {
         }
     }
     
+    // Generate the next state of the grid
     public func next() -> Grid {
         var nextGrid = Grid(modulus.row, modulus.col)
         positions.forEach { nextGrid[$0] = self.nextState(of: $0) }
