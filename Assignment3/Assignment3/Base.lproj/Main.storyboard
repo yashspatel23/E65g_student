@@ -5,6 +5,8 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,44 +22,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HGj-ba-bWx" customClass="GridView" customModule="Assignment3" customModuleProvider="target">
-                                <rect key="frame" x="12" y="158" width="350" height="350"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebA-bJ-9zQ" userLabel="Content Area">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGj-ba-bWx" customClass="GridView" customModule="Assignment3" customModuleProvider="target">
+                                        <rect key="frame" x="37" y="173" width="300" height="300"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="HGj-ba-bWx" secondAttribute="height" multiplier="1:1" id="pt0-7p-DOs"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="size">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="livingColor">
+                                                <color key="value" red="0.0" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
+                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="bornColor">
+                                                <color key="value" red="0.0" green="0.5" blue="0.0" alpha="0.59653253424657537" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="diedColor">
+                                                <color key="value" white="0.33333333333333331" alpha="0.60148223458904104" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="gridColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="gridWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5B-vS-5Pq">
+                                        <rect key="frame" x="37" y="141" width="32" height="30"/>
+                                        <state key="normal" title="Step"/>
+                                        <connections>
+                                            <action selector="stepBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wUE-b7-cnt"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="size">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="livingColor">
-                                        <color key="value" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
-                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bornColor">
-                                        <color key="value" red="0.0" green="1" blue="0.0" alpha="0.59843214897260277" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="diedColor">
-                                        <color key="value" white="0.33333333333333331" alpha="0.60148223458904104" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="gridColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="gridWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <constraints>
+                                    <constraint firstItem="HGj-ba-bWx" firstAttribute="width" relation="lessThanOrEqual" secondItem="ebA-bJ-9zQ" secondAttribute="width" multiplier="0.8" id="RFg-9a-NQ6"/>
+                                    <constraint firstItem="Q5B-vS-5Pq" firstAttribute="leading" secondItem="HGj-ba-bWx" secondAttribute="leading" id="Ujp-Te-i4k"/>
+                                    <constraint firstItem="HGj-ba-bWx" firstAttribute="centerX" secondItem="ebA-bJ-9zQ" secondAttribute="centerX" id="ZJB-c2-Qrp"/>
+                                    <constraint firstItem="HGj-ba-bWx" firstAttribute="centerY" secondItem="ebA-bJ-9zQ" secondAttribute="centerY" id="ZjH-3M-jPZ"/>
+                                    <constraint firstItem="HGj-ba-bWx" firstAttribute="height" relation="lessThanOrEqual" secondItem="ebA-bJ-9zQ" secondAttribute="height" multiplier="0.8" id="aiQ-AL-V4s"/>
+                                    <constraint firstItem="HGj-ba-bWx" firstAttribute="top" secondItem="Q5B-vS-5Pq" secondAttribute="bottom" constant="2" id="cCG-Lr-xPq"/>
+                                    <constraint firstItem="HGj-ba-bWx" firstAttribute="height" secondItem="ebA-bJ-9zQ" secondAttribute="height" multiplier="0.8" priority="750" id="i0U-iB-dct"/>
+                                    <constraint firstItem="HGj-ba-bWx" firstAttribute="width" secondItem="ebA-bJ-9zQ" secondAttribute="width" multiplier="0.8" priority="750" id="vvV-aV-Ilk"/>
+                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5B-vS-5Pq">
-                                <rect key="frame" x="16" y="112" width="32" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Step"/>
-                                <connections>
-                                    <action selector="stepBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wUE-b7-cnt"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ebA-bJ-9zQ" secondAttribute="bottom" id="Kxq-MJ-irZ"/>
+                            <constraint firstItem="ebA-bJ-9zQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="OLm-Pm-yZw"/>
+                            <constraint firstAttribute="trailing" secondItem="ebA-bJ-9zQ" secondAttribute="trailing" id="Re8-K4-1lS"/>
+                            <constraint firstItem="ebA-bJ-9zQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="myC-i9-AeA"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="GridView" destination="HGj-ba-bWx" id="TzD-YD-5nz"/>
@@ -66,6 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="21.600000000000001" y="24.7376311844078"/>
         </scene>
     </scenes>
 </document>
