@@ -10,12 +10,26 @@ import UIKit
 
 @IBDesignable class GridView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBInspectable var size: Int = 20 {
+        didSet {
+            grid = Grid(size, size)
+        }
     }
-    */
+    
+    @IBInspectable var livingColor: UIColor = UIColor.green
+    @IBInspectable var emptyColor: UIColor = UIColor.clear
+    @IBInspectable var bornColor: UIColor = UIColor.cyan
+    @IBInspectable var diedColor: UIColor = UIColor.black
+    @IBInspectable var gridColor: UIColor = UIColor.gray
+    
+    @IBInspectable var gridWidth: CGFloat = CGFloat(2.0)
+    
+    
+    var grid = Grid(20, 20)
+    
+    override func draw(_ rect: CGRect) {
+        
+    }
+    
 
 }
