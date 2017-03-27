@@ -61,6 +61,39 @@ import UIKit
             )
         }
         
+        
+        // Draw Circles
+        (0 ..< size).forEach { i in
+            (0 ..< size).forEach { j in
+                
+                let origin = CGPoint(
+                    x: rect.origin.x + (CGFloat(i) * gridSize.width) + gridWidth,
+                    y: rect.origin.y + (CGFloat(j) * gridSize.height) + gridWidth
+                )
+                
+                let subRectSize = CGSize(
+                    width: gridSize.width - (gridWidth * 2),
+                    height: gridSize.height - (gridWidth * 2)
+                )
+                
+                let subRect = CGRect(
+                    origin: origin,
+                    size: subRectSize
+                )
+                
+                let path = UIBezierPath(ovalIn: subRect)
+                
+                switch grid[(i,j)].description() {
+                    case "alive": livingColor.setFill()
+                    case "empty": emptyColor.setFill()
+                    case "born": bornColor.setFill()
+                    case "died": diedColor.setFill()
+                    default: emptyColor.setFill()
+                }
+                
+                path.fill()
+            }
+        }
     }
     
     
@@ -74,3 +107,7 @@ import UIKit
         
     }
 }
+
+
+
+
