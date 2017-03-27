@@ -39,11 +39,7 @@ public enum CellState: String {
     
     public func description() -> String {
         switch self {
-        // case .alive, .empty, .born, .died: return self.rawValue
-        case .alive: return self.rawValue
-        case .empty: return self.rawValue
-        case .born: return self.rawValue
-        case .died: return self.rawValue
+          case .alive, .empty, .born, .died: return self.rawValue
         }
     }
     

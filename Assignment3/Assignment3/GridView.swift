@@ -104,7 +104,6 @@ import UIKit
         path.addLine(to: end)
         gridColor.setStroke()
         path.stroke()
-        
     }
     
     
