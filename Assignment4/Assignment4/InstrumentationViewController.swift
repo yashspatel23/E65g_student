@@ -37,6 +37,10 @@ class InstrumentationViewController: UIViewController {
     func updateSize(_ sender: UIStepper) {
         rowText.text = "\(Int(sender.value))"
         colText.text = "\(Int(sender.value))"
+        
+        rowStepper.value = sender.value
+        colStepper.value = sender.value
+        
         StandardEngine.rowsSingleton = Int(sender.value)
         StandardEngine.colsSingleton = Int(sender.value)
         engine = StandardEngine.getEngine()
