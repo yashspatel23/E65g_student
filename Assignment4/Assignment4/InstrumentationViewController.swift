@@ -17,14 +17,7 @@ class InstrumentationViewController: UIViewController {
     @IBOutlet weak var refreshSpeed: UISlider!
     @IBOutlet weak var refreshToggle: UISwitch!
     
-    var engine : EngineProtocol = StandardEngine.engine
-    
-    @IBAction func toggleRefresh(_ sender: UISwitch) {
-    }
-    
-    @IBAction func changeRefreshSpeed(_ sender: UISlider) {
-    }
-    
+    var engine : EngineProtocol = StandardEngine.getEngine()
     
     @IBAction func colStepper(_ sender: UIStepper) {
         updateSize(sender)
@@ -46,23 +39,28 @@ class InstrumentationViewController: UIViewController {
         colText.text = "\(Int(sender.value))"
         StandardEngine.rowsSingleton = Int(sender.value)
         StandardEngine.colsSingleton = Int(sender.value)
-        engine = StandardEngine.engine
+        engine = StandardEngine.getEngine()
     }
     
     
     
     
+    @IBAction func toggleRefresh(_ sender: UISwitch) {
+        if sender.isOn {
+            engine.refreshRate = 1/Double(refreshSpeed.value)
+        } else {
+            engine.refreshRate = 0.0
+        }
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    @IBAction func changeRefreshSpeed(_ sender: UISlider) {
+        if refreshToggle.isOn {
+            engine.refreshRate = 0.0
+            engine.refreshRate = 1/Double(refreshSpeed.value)
+        } else {
+            engine.refreshRate = 0.0
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -72,8 +70,6 @@ class InstrumentationViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    
-    
     
     
     override func didReceiveMemoryWarning() {
