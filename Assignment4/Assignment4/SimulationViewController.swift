@@ -38,7 +38,28 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
         gridView.size = engine.rows
         
         
-        // Do any additional setup after loading the view.
+        
+        NotificationCenter.default.addObserver(
+            forName: Notification.Name(rawValue: "GridUpdated"),
+            object: nil,
+            queue: nil) { (n) in
+                self.gridView.setNeedsDisplay() // dont really need it, engineDidUpdate takes care of it
+        }
+        
+        
+        NotificationCenter.default.addObserver(
+            forName: Notification.Name(rawValue: "GridSizeUpdated"),
+            object: nil,
+            queue: nil) { (n) in
+                self.engine = StandardEngine.engine
+                self.gridView.grid = self
+                self.gridView.size = self.engine.rows
+                self.gridView.setNeedsDisplay()
+        }
+    }
+    
+    func engineDidUpdate(withGrid: GridProtocol) {
+        self.gridView.setNeedsDisplay()
     }
 
     override func didReceiveMemoryWarning() {

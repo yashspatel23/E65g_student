@@ -214,8 +214,6 @@ class StandardEngine: EngineProtocol {
     
     static var rowsSingleton: Int = 10 {
         didSet {
-            print(rowsSingleton)
-            print(colsSingleton)
             if rowsSingleton == colsSingleton {
                 engine = StandardEngine(rowsSingleton, colsSingleton)
                 NotificationCenter.default.post(
@@ -228,8 +226,6 @@ class StandardEngine: EngineProtocol {
     }
     static var colsSingleton: Int = 10 {
         didSet {
-            print(rowsSingleton)
-            print(colsSingleton)
             if rowsSingleton == colsSingleton {
                 engine = StandardEngine(rowsSingleton, colsSingleton)
                 NotificationCenter.default.post(
