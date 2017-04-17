@@ -176,13 +176,13 @@ public extension Grid {
 
 
 
-public protocol EngineDelegateProtocol {
+public protocol EngineDelegate {
     func engineDidUpdate(_ withGrid: GridProtocol)
 }
 
 
 public protocol EngineProtocol {
-    var delegate: EngineDelegateProtocol? { get set }
+    var delegate: EngineDelegate? { get set }
     var grid: GridProtocol { get }
     var refreshRate: Double { get set }
     var refreshTimer: Timer? { get set }
@@ -196,10 +196,17 @@ extension EngineProtocol {
     var refreshRate: Double { return 0.0 }
 }
 
+public protocol GridViewDataSource {
+    subscript (row: Int, col: Int) -> CellState { get set }
+}
 
 class StandardEngine: EngineProtocol {
     
-    var delegate: EngineDelegateProtocol?
+    static func getEngine() -> StandardEngine {
+        return StandardEngine.engine
+    }
+    
+    var delegate: EngineDelegate?
     var grid: GridProtocol
     static var engine: StandardEngine = StandardEngine(10, 10)
     

@@ -8,13 +8,21 @@
 
 import UIKit
 
-class SimulationViewController: UIViewController, EngineDelegateProtocol {
+class SimulationViewController: UIViewController, GridViewDataSource, EngineDelegate {
     
-    let engine = StandardEngine.engine
+    var engine: StandardEngine!
+    
+    public subscript (row: Int, col: Int) -> CellState {
+        get { return engine.grid[row,col] }
+        set { engine.grid[row,col] = newValue }
+    }
+    
     @IBOutlet weak var GridView: GridView!
     
     @IBAction func stepButton(_ sender: Any) {
-        _ = engine.step()
+        if self.GridView.gridViewDataSource != nil {
+            engine.grid = self.engine.step()
+        }
     }
     
     func engineDidUpdate(_ withGrid: GridProtocol) {
@@ -24,7 +32,9 @@ class SimulationViewController: UIViewController, EngineDelegateProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        engine = StandardEngine.getEngine()
         engine.delegate = self
+        GridView.gridViewDataSource = self
         // Do any additional setup after loading the view.
     }
 

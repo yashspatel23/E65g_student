@@ -8,12 +8,14 @@
 
 import UIKit
 
-@IBDesignable class GridView: UIView {
+@IBDesignable class GridView: UIView, GridViewDataSource {
 
-    @IBInspectable var size: Int = 20 {
-        didSet {
-            grid = Grid(size, size)
-        }
+    @IBInspectable var size: Int = 10
+    
+    
+    public subscript (row: Int, col: Int) -> CellState {
+        get { return gridViewDataSource![row,col] }
+        set { gridViewDataSource?[row,col] = newValue }
     }
     
     @IBInspectable var livingColor: UIColor = UIColor.green
@@ -25,9 +27,15 @@ import UIKit
     @IBInspectable var gridWidth: CGFloat = CGFloat(2.0)
     
     
-    var grid = Grid(20, 20)
+//    var grid = Grid(20, 20)
+    var engine: StandardEngine!
+    var gridViewDataSource: GridViewDataSource?
+    
     
     override func draw(_ rect: CGRect) {
+        
+        engine = StandardEngine.getEngine()
+        self.size = engine.rows
 
         let gridSize = CGSize(
             width: rect.size.width / CGFloat(size),
@@ -83,11 +91,13 @@ import UIKit
                 
                 let path = UIBezierPath(ovalIn: subRect)
                 
+                if let grid = self.gridViewDataSource {
                 switch grid[(i,j)].description() {
                     case .alive: livingColor.setFill()
                     case .empty: emptyColor.setFill()
                     case .born: bornColor.setFill()
                     case .died: diedColor.setFill()
+                }
                 }
                 
                 path.fill()
@@ -132,8 +142,10 @@ import UIKit
             || lastTouchedPosition?.col != pos.col
             else { return pos }
         
-        grid[pos.row, pos.col] = grid[pos.row, pos.col].toggle(value: grid[pos.row, pos.col])
-        setNeedsDisplay()
+        if gridViewDataSource != nil {
+            gridViewDataSource![pos.row, pos.col] = gridViewDataSource![pos.row, pos.col].isAlive ? .empty : .alive
+            setNeedsDisplay()
+        }
         return pos
     }
     
