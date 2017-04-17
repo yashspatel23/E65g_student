@@ -84,10 +84,11 @@ import UIKit
                 let path = UIBezierPath(ovalIn: subRect)
                 
                 switch grid[(i,j)].description() {
-                    case .alive: livingColor.setFill()
-                    case .empty: emptyColor.setFill()
-                    case .born: bornColor.setFill()
-                    case .died: diedColor.setFill()
+                    case "alive": livingColor.setFill()
+                    case "empty": emptyColor.setFill()
+                    case "born": bornColor.setFill()
+                    case "died": diedColor.setFill()
+                    default: emptyColor.setFill()
                 }
                 
                 path.fill()
@@ -107,7 +108,7 @@ import UIKit
     
     
     var lastTouchedPosition: Position?
-    typealias Position = (row: Int, col: Int)
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         lastTouchedPosition = process(touches: touches)
@@ -131,8 +132,7 @@ import UIKit
             || lastTouchedPosition?.col != pos.col
             else { return pos }
         
-        
-        grid[pos.row, pos.col] = grid[pos.row, pos.col].toggle(value: grid[pos.row, pos.col])
+        grid[pos] = grid[pos].toggle(value: grid[pos])
         setNeedsDisplay()
         return pos
     }
