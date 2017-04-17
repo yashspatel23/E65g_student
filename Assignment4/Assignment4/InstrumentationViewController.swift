@@ -15,13 +15,67 @@ class InstrumentationViewController: UIViewController {
     @IBOutlet weak var colText: UITextField!
     @IBOutlet weak var colStepper: UIStepper!
     @IBOutlet weak var refreshSpeed: UISlider!
+    @IBOutlet weak var refreshToggle: UISwitch!
+    
+    var engine : EngineProtocol = StandardEngine.engine
+    
+    @IBAction func toggleRefresh(_ sender: UISwitch) {
+    }
+    
+    @IBAction func changeRefreshSpeed(_ sender: UISlider) {
+    }
+    
+    
+    @IBAction func colStepper(_ sender: UIStepper) {
+        updateSize(sender)
+        
+        refreshToggle.isOn = false
+        engine.refreshRate = 0.0
+    }
+    
+    
+    @IBAction func rowStepper(_ sender: UIStepper) {
+        updateSize(sender)
+        
+        refreshToggle.isOn = false
+        engine.refreshRate = 0.0
+    }
+    
+    func updateSize(_ sender: UIStepper) {
+        rowText.text = "\(Int(sender.value))"
+        colText.text = "\(Int(sender.value))"
+        StandardEngine.rowsSingleton = Int(sender.value)
+        StandardEngine.colsSingleton = Int(sender.value)
+        engine = StandardEngine.engine
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        rowText.text = "\(Int(rowStepper.value))"
+        colText.text = "\(Int(colStepper.value))"
         // Do any additional setup after loading the view.
     }
 
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

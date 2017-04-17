@@ -208,10 +208,42 @@ class StandardEngine: EngineProtocol {
     
     var delegate: EngineDelegate?
     var grid: GridProtocol
-    static var engine: StandardEngine = StandardEngine(10, 10)
+    static var engine: StandardEngine = StandardEngine(rowsSingleton, colsSingleton)
+    
+    
+    
+    static var rowsSingleton: Int = 10 {
+        didSet {
+            print(rowsSingleton)
+            print(colsSingleton)
+            if rowsSingleton == colsSingleton {
+                engine = StandardEngine(rowsSingleton, colsSingleton)
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: "GridSizeUpdated"),
+                    object: nil,
+                    userInfo: ["engine" : self]
+                )
+            }
+        }
+    }
+    static var colsSingleton: Int = 10 {
+        didSet {
+            print(rowsSingleton)
+            print(colsSingleton)
+            if rowsSingleton == colsSingleton {
+                engine = StandardEngine(rowsSingleton, colsSingleton)
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: "GridSizeUpdated"),
+                    object: nil,
+                    userInfo: ["engine" : self]
+                )
+            }
+        }
+    }
     
     var rows : Int
     var cols : Int
+    
     
     var refreshTimer: Timer?
     var refreshRate: TimeInterval = 0.0 {
