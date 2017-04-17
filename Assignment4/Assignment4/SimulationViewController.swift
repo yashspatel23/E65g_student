@@ -43,7 +43,7 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
             forName: Notification.Name(rawValue: "GridUpdated"),
             object: nil,
             queue: nil) { (n) in
-                self.gridView.setNeedsDisplay() // dont really need it, engineDidUpdate takes care of it
+                self.gridView.setNeedsDisplay()
         }
         
         

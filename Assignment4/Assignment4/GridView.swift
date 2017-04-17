@@ -144,7 +144,12 @@ import UIKit
         
         if grid != nil {
             grid![pos.row, pos.col] = grid![pos.row, pos.col].isAlive ? .empty : .alive
-            setNeedsDisplay()
+            
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: "GridUpdated"),
+                object: nil,
+                userInfo: ["engine" : self]
+            )
         }
         return pos
     }
