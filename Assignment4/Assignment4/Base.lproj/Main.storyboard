@@ -5,6 +5,8 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -93,7 +95,7 @@
         <!--Instrumentation-->
         <scene sceneID="Hlw-XE-iCf">
             <objects>
-                <viewController id="RVg-Df-Ifh" userLabel="Instrumentation" sceneMemberID="viewController">
+                <viewController id="RVg-Df-Ifh" userLabel="Instrumentation" customClass="InstrumentationViewController" customModule="Assignment4" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g91-Tn-Pbw"/>
                         <viewControllerLayoutGuide type="bottom" id="Oyx-TP-KC2"/>
@@ -102,9 +104,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVU-u2-ELW">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVU-u2-ELW" userLabel="Content Area">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VHs-f3-3OZ">
+                                        <rect key="frame" x="37.5" y="149" width="300" height="300"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rows" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7NM-nZ-qdk">
+                                                <rect key="frame" x="44" y="23" width="97" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="sPc-Aq-Wzc">
+                                                <rect key="frame" x="161" y="23" width="94" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </stepper>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="rMT-NJ-45K">
+                                                <rect key="frame" x="161" y="67" width="94" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </stepper>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Columns" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dvG-um-ZnG">
+                                                <rect key="frame" x="44" y="67" width="97" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Refresh Rate Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0a-LE-Ahf">
+                                                <rect key="frame" x="44" y="140" width="136" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.10000000000000001" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="mLR-iz-USa">
+                                                <rect key="frame" x="42" y="169" width="215" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enable Timed Refresh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01n-jm-IXq">
+                                                <rect key="frame" x="44" y="220" width="168" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R7N-Id-fpc">
+                                                <rect key="frame" x="206" y="215" width="51" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </switch>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="VHs-f3-3OZ" secondAttribute="height" multiplier="1:1" id="3iE-Q6-Fo9"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.15143407534246575" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="VHs-f3-3OZ" firstAttribute="width" relation="lessThanOrEqual" secondItem="mVU-u2-ELW" secondAttribute="width" multiplier="0.8" id="4w2-s3-8aT"/>
+                                    <constraint firstItem="VHs-f3-3OZ" firstAttribute="height" relation="lessThanOrEqual" secondItem="mVU-u2-ELW" secondAttribute="height" multiplier="0.8" id="AKe-5M-oQO"/>
+                                    <constraint firstItem="VHs-f3-3OZ" firstAttribute="height" secondItem="mVU-u2-ELW" secondAttribute="height" multiplier="0.8" priority="750" id="c33-Ga-2pU"/>
+                                    <constraint firstItem="VHs-f3-3OZ" firstAttribute="width" secondItem="mVU-u2-ELW" secondAttribute="width" multiplier="0.8" priority="750" id="lvF-og-4me"/>
+                                    <constraint firstItem="VHs-f3-3OZ" firstAttribute="centerX" secondItem="mVU-u2-ELW" secondAttribute="centerX" id="pgm-JQ-zoV"/>
+                                    <constraint firstItem="VHs-f3-3OZ" firstAttribute="centerY" secondItem="mVU-u2-ELW" secondAttribute="centerY" id="sse-VT-kDg"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -116,6 +181,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Instrumentation" image="Instrumentation" id="XL7-sz-0FD" userLabel="Instrumentation"/>
+                    <connections>
+                        <outlet property="colStepper" destination="rMT-NJ-45K" id="314-4B-SNV"/>
+                        <outlet property="colText" destination="dvG-um-ZnG" id="uc4-Il-0Jy"/>
+                        <outlet property="refreshSpeed" destination="mLR-iz-USa" id="114-9R-cwd"/>
+                        <outlet property="rowStepper" destination="sPc-Aq-Wzc" id="6yy-eG-lfI"/>
+                        <outlet property="rowText" destination="7NM-nZ-qdk" id="h8e-b5-ulB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mDr-dy-2Td" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

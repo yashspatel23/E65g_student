@@ -10,6 +10,12 @@ import UIKit
 
 class InstrumentationViewController: UIViewController {
 
+    @IBOutlet weak var rowText: UITextField!
+    @IBOutlet weak var rowStepper: UIStepper!
+    @IBOutlet weak var colText: UITextField!
+    @IBOutlet weak var colStepper: UIStepper!
+    @IBOutlet weak var refreshSpeed: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
