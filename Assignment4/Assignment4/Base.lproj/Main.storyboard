@@ -197,68 +197,85 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VHs-f3-3OZ">
-                                        <rect key="frame" x="37.5" y="149" width="300" height="300"/>
+                                        <rect key="frame" x="38" y="149" width="300" height="300"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rows" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7NM-nZ-qdk">
-                                                <rect key="frame" x="44" y="23" width="97" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rows" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7NM-nZ-qdk">
+                                                <rect key="frame" x="73" y="20" width="65" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="Hma-FV-hSN"/>
+                                                    <constraint firstAttribute="width" constant="65" id="Jdr-Xv-OUx"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minimumValue="10" maximumValue="50" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="sPc-Aq-Wzc">
-                                                <rect key="frame" x="161" y="23" width="94" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minimumValue="10" maximumValue="50" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="sPc-Aq-Wzc">
+                                                <rect key="frame" x="148" y="20" width="94" height="29"/>
                                                 <connections>
                                                     <action selector="rowStepper:" destination="RVg-Df-Ifh" eventType="valueChanged" id="nPC-7W-Tow"/>
                                                 </connections>
                                             </stepper>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minimumValue="10" maximumValue="50" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="rMT-NJ-45K">
-                                                <rect key="frame" x="161" y="67" width="94" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <connections>
-                                                    <action selector="colStepper:" destination="RVg-Df-Ifh" eventType="valueChanged" id="98E-kO-y6Z"/>
-                                                </connections>
-                                            </stepper>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Columns" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dvG-um-ZnG">
-                                                <rect key="frame" x="44" y="67" width="97" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Columns" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dvG-um-ZnG">
+                                                <rect key="frame" x="73" y="65" width="65" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="bsL-Wy-dRi"/>
+                                                    <constraint firstAttribute="width" constant="65" id="xUu-ha-os6"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Refresh Rate Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0a-LE-Ahf">
-                                                <rect key="frame" x="44" y="140" width="136" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.10000000000000001" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="mLR-iz-USa">
-                                                <rect key="frame" x="42" y="169" width="215" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.10000000000000001" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="mLR-iz-USa">
+                                                <rect key="frame" x="52.5" y="139.5" width="194" height="31"/>
                                                 <connections>
                                                     <action selector="changeRefreshSpeed:" destination="RVg-Df-Ifh" eventType="valueChanged" id="70G-D2-u1L"/>
                                                 </connections>
                                             </slider>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enable Timed Refresh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01n-jm-IXq">
-                                                <rect key="frame" x="44" y="220" width="168" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Timed Refresh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01n-jm-IXq">
+                                                <rect key="frame" x="58.5" y="184.5" width="124" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R7N-Id-fpc">
-                                                <rect key="frame" x="206" y="215" width="51" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R7N-Id-fpc">
+                                                <rect key="frame" x="195.5" y="174.5" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="toggleRefresh:" destination="RVg-Df-Ifh" eventType="valueChanged" id="RkL-Xy-omv"/>
                                                 </connections>
                                             </switch>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minimumValue="10" maximumValue="50" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="rMT-NJ-45K">
+                                                <rect key="frame" x="148" y="64" width="94" height="29"/>
+                                                <connections>
+                                                    <action selector="colStepper:" destination="RVg-Df-Ifh" eventType="valueChanged" id="98E-kO-y6Z"/>
+                                                </connections>
+                                            </stepper>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refresh Rate Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0a-LE-Ahf">
+                                                <rect key="frame" x="94" y="120" width="112" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="R7N-Id-fpc" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" constant="70" id="0j0-pN-BRq"/>
+                                            <constraint firstItem="mLR-iz-USa" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" id="30o-kt-heZ"/>
                                             <constraint firstAttribute="width" secondItem="VHs-f3-3OZ" secondAttribute="height" multiplier="1:1" id="3iE-Q6-Fo9"/>
+                                            <constraint firstItem="rMT-NJ-45K" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" constant="45" id="9qz-4X-vHz"/>
+                                            <constraint firstItem="7NM-nZ-qdk" firstAttribute="top" secondItem="VHs-f3-3OZ" secondAttribute="top" constant="20" id="DwA-nU-eic"/>
+                                            <constraint firstItem="rMT-NJ-45K" firstAttribute="top" secondItem="sPc-Aq-Wzc" secondAttribute="bottom" constant="15" id="Iwz-Nh-FKk"/>
+                                            <constraint firstItem="01n-jm-IXq" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" constant="-30" id="OMm-ib-Ssp"/>
+                                            <constraint firstItem="J0a-LE-Ahf" firstAttribute="top" secondItem="dvG-um-ZnG" secondAttribute="bottom" constant="25" id="ObQ-R4-nK8"/>
+                                            <constraint firstItem="dvG-um-ZnG" firstAttribute="top" secondItem="7NM-nZ-qdk" secondAttribute="bottom" constant="15" id="XvC-ac-Stv"/>
+                                            <constraint firstItem="sPc-Aq-Wzc" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" constant="45" id="Yo7-hm-gJM"/>
+                                            <constraint firstItem="dvG-um-ZnG" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" constant="-45" id="csz-rk-Imf"/>
+                                            <constraint firstItem="J0a-LE-Ahf" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" id="ilR-s5-ZzA"/>
+                                            <constraint firstItem="mLR-iz-USa" firstAttribute="top" secondItem="J0a-LE-Ahf" secondAttribute="bottom" constant="5" id="kqS-DR-QpS"/>
+                                            <constraint firstItem="mLR-iz-USa" firstAttribute="trailing" secondItem="R7N-Id-fpc" secondAttribute="trailing" id="m8V-kN-azA"/>
+                                            <constraint firstItem="01n-jm-IXq" firstAttribute="top" secondItem="mLR-iz-USa" secondAttribute="bottom" constant="15" id="mGO-9j-EMB"/>
+                                            <constraint firstItem="R7N-Id-fpc" firstAttribute="top" secondItem="mLR-iz-USa" secondAttribute="bottom" constant="5" id="pYT-MM-1Wd"/>
+                                            <constraint firstItem="sPc-Aq-Wzc" firstAttribute="top" secondItem="VHs-f3-3OZ" secondAttribute="top" constant="20" id="peG-hQ-hGH"/>
+                                            <constraint firstItem="7NM-nZ-qdk" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" constant="-45" id="zUo-Mq-ThZ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
