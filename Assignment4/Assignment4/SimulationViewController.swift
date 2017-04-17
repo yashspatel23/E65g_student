@@ -8,11 +8,23 @@
 
 import UIKit
 
-class SimulationViewController: UIViewController {
-
+class SimulationViewController: UIViewController, EngineDelegateProtocol {
+    
+    let engine = StandardEngine.engine
+    @IBOutlet weak var GridView: GridView!
+    
+    @IBAction func stepButton(_ sender: Any) {
+        _ = engine.step()
+    }
+    
+    func engineDidUpdate(_ withGrid: GridProtocol) {
+        self.GridView.setNeedsDisplay()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        engine.delegate = self
         // Do any additional setup after loading the view.
     }
 
