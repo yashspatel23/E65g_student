@@ -10,6 +10,8 @@ import UIKit
 
 class SimulationViewController: UIViewController, GridViewDataSource, EngineDelegate {
     
+    @IBOutlet weak var gridView: GridView!
+    
     var engine: StandardEngine!
     
     public subscript (row: Int, col: Int) -> CellState {
@@ -17,24 +19,25 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
         set { engine.grid[row,col] = newValue }
     }
     
-    @IBOutlet weak var GridView: GridView!
     
     @IBAction func stepButton(_ sender: Any) {
-        if self.GridView.gridViewDataSource != nil {
-            engine.grid = self.engine.step()
-        }
+        _ = engine.step()
     }
     
     func engineDidUpdate(_ withGrid: GridProtocol) {
-        self.GridView.setNeedsDisplay()
+        self.gridView.setNeedsDisplay()
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         engine = StandardEngine.getEngine()
         engine.delegate = self
-        GridView.gridViewDataSource = self
+        gridView.grid = self
+        gridView.size = engine.rows
+        
+        
         // Do any additional setup after loading the view.
     }
 

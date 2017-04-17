@@ -14,8 +14,8 @@ import UIKit
     
     
     public subscript (row: Int, col: Int) -> CellState {
-        get { return gridViewDataSource![row,col] }
-        set { gridViewDataSource?[row,col] = newValue }
+        get { return grid![row,col] }
+        set { grid?[row,col] = newValue }
     }
     
     @IBInspectable var livingColor: UIColor = UIColor.green
@@ -29,7 +29,7 @@ import UIKit
     
 //    var grid = Grid(20, 20)
     var engine: StandardEngine!
-    var gridViewDataSource: GridViewDataSource?
+    var grid: GridViewDataSource?
     
     
     override func draw(_ rect: CGRect) {
@@ -91,7 +91,7 @@ import UIKit
                 
                 let path = UIBezierPath(ovalIn: subRect)
                 
-                if let grid = self.gridViewDataSource {
+                if let grid = self.grid {
                 switch grid[(i,j)].description() {
                     case .alive: livingColor.setFill()
                     case .empty: emptyColor.setFill()
@@ -142,8 +142,8 @@ import UIKit
             || lastTouchedPosition?.col != pos.col
             else { return pos }
         
-        if gridViewDataSource != nil {
-            gridViewDataSource![pos.row, pos.col] = gridViewDataSource![pos.row, pos.col].isAlive ? .empty : .alive
+        if grid != nil {
+            grid![pos.row, pos.col] = grid![pos.row, pos.col].isAlive ? .empty : .alive
             setNeedsDisplay()
         }
         return pos

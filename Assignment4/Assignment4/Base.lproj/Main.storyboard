@@ -34,7 +34,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="size">
-                                                <integer key="value" value="20"/>
+                                                <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="gridWidth">
                                                 <integer key="value" value="2"/>
@@ -87,8 +87,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Simulation" image="Simulation" id="2u2-K0-cas" userLabel="Simulation"/>
                     <connections>
-                        <outlet property="GridView" destination="BzU-t5-dcR" id="btU-D0-HTH"/>
-                        <outlet property="gridView" destination="tEE-g3-Mqt" id="4ja-19-a9a"/>
+                        <outlet property="gridView" destination="BzU-t5-dcR" id="GrF-1b-uAw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r8o-mR-gnY" userLabel="First Responder" sceneMemberID="firstResponder"/>
