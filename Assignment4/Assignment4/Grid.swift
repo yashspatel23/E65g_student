@@ -172,9 +172,9 @@ public extension Grid {
 
 
 
-
-
-
+/*******************************************
+ * PROBLEM SET 4 ENGINE CODE BELOW
+*******************************************/
 
 public protocol EngineDelegate {
     func engineDidUpdate(_ withGrid: GridProtocol)
@@ -192,30 +192,30 @@ public protocol EngineProtocol {
     func step() -> GridProtocol
 }
 
+
 extension EngineProtocol {
     var refreshRate: Double { return 0.0 }
 }
+
 
 public protocol GridViewDataSource {
     subscript (row: Int, col: Int) -> CellState { get set }
 }
 
+
 class StandardEngine: EngineProtocol {
-    
     static func getEngine() -> StandardEngine {
         return StandardEngine.engine
     }
     
     var delegate: EngineDelegate?
     var grid: GridProtocol
-    static var engine: StandardEngine = StandardEngine(rowsSingleton, colsSingleton)
+    static var engine: StandardEngine = StandardEngine(rowsInstance, colsInstance)
     
-    
-    
-    static var rowsSingleton: Int = 10 {
+    static var rowsInstance: Int = 10 {
         didSet {
-            if rowsSingleton == colsSingleton {
-                engine = StandardEngine(rowsSingleton, colsSingleton)
+            if rowsInstance == colsInstance {
+                engine = StandardEngine(rowsInstance, colsInstance)
                 NotificationCenter.default.post(
                     name: Notification.Name(rawValue: "GridSizeUpdated"),
                     object: nil,
@@ -224,10 +224,11 @@ class StandardEngine: EngineProtocol {
             }
         }
     }
-    static var colsSingleton: Int = 10 {
+    
+    static var colsInstance: Int = 10 {
         didSet {
-            if rowsSingleton == colsSingleton {
-                engine = StandardEngine(rowsSingleton, colsSingleton)
+            if rowsInstance == colsInstance {
+                engine = StandardEngine(rowsInstance, colsInstance)
                 NotificationCenter.default.post(
                     name: Notification.Name(rawValue: "GridSizeUpdated"),
                     object: nil,
@@ -239,7 +240,6 @@ class StandardEngine: EngineProtocol {
     
     var rows : Int
     var cols : Int
-    
     
     var refreshTimer: Timer?
     var refreshRate: TimeInterval = 0.0 {
@@ -290,21 +290,4 @@ class StandardEngine: EngineProtocol {
         )
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

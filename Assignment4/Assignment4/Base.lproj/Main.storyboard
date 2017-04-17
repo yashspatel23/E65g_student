@@ -214,6 +214,10 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="rowTextChanged:" destination="RVg-Df-Ifh" eventType="editingDidEnd" id="JpS-OH-wUW"/>
+                                                    <action selector="rowTextEnd:" destination="RVg-Df-Ifh" eventType="editingDidEndOnExit" id="OQz-2X-FUh"/>
+                                                </connections>
                                             </textField>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minimumValue="10" maximumValue="50" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="sPc-Aq-Wzc">
                                                 <rect key="frame" x="148" y="20" width="94" height="29"/>
@@ -230,6 +234,10 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="colTextChanged:" destination="RVg-Df-Ifh" eventType="editingDidEnd" id="mQz-h2-4TL"/>
+                                                    <action selector="colTextEnd:" destination="RVg-Df-Ifh" eventType="editingDidEndOnExit" id="8yj-an-bkR"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refresh Rate Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0a-LE-Ahf">
                                                 <rect key="frame" x="94" y="120" width="112" height="14.5"/>
@@ -252,30 +260,30 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R7N-Id-fpc">
-                                                <rect key="frame" x="215" y="177.5" width="12" height="31"/>
-                                                <connections>
-                                                    <action selector="toggleRefresh:" destination="RVg-Df-Ifh" eventType="valueChanged" id="RkL-Xy-omv"/>
-                                                </connections>
-                                            </switch>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minimumValue="10" maximumValue="50" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="rMT-NJ-45K">
                                                 <rect key="frame" x="148" y="64" width="94" height="29"/>
                                                 <connections>
                                                     <action selector="colStepper:" destination="RVg-Df-Ifh" eventType="valueChanged" id="98E-kO-y6Z"/>
                                                 </connections>
                                             </stepper>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cc4-Fe-uQ8">
-                                                <rect key="frame" x="228.5" y="149" width="20.5" height="12"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOY-5g-GHO">
                                                 <rect key="frame" x="46.5" y="148" width="25" height="13.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cc4-Fe-uQ8">
+                                                <rect key="frame" x="228.5" y="149" width="20.5" height="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R7N-Id-fpc">
+                                                <rect key="frame" x="195.5" y="178" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="toggleRefresh:" destination="RVg-Df-Ifh" eventType="valueChanged" id="RkL-Xy-omv"/>
+                                                </connections>
+                                            </switch>
                                         </subviews>
                                         <color key="backgroundColor" red="0.95686274509803915" green="1" blue="0.92156862745098034" alpha="0.5" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -296,7 +304,6 @@
                                             <constraint firstItem="J0a-LE-Ahf" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" id="ilR-s5-ZzA"/>
                                             <constraint firstItem="mLR-iz-USa" firstAttribute="top" secondItem="J0a-LE-Ahf" secondAttribute="bottom" constant="5" id="kqS-DR-QpS"/>
                                             <constraint firstItem="cc4-Fe-uQ8" firstAttribute="leading" secondItem="mLR-iz-USa" secondAttribute="trailing" constant="3.5" id="lJk-70-wG8"/>
-                                            <constraint firstItem="mLR-iz-USa" firstAttribute="trailing" secondItem="R7N-Id-fpc" secondAttribute="trailing" id="m8V-kN-azA"/>
                                             <constraint firstItem="01n-jm-IXq" firstAttribute="top" secondItem="mLR-iz-USa" secondAttribute="bottom" constant="18" id="mGO-9j-EMB"/>
                                             <constraint firstItem="R7N-Id-fpc" firstAttribute="top" secondItem="mLR-iz-USa" secondAttribute="bottom" constant="8" id="pYT-MM-1Wd"/>
                                             <constraint firstItem="sPc-Aq-Wzc" firstAttribute="top" secondItem="VHs-f3-3OZ" secondAttribute="top" constant="20" id="peG-hQ-hGH"/>

@@ -12,7 +12,6 @@ import UIKit
 
     @IBInspectable var size: Int = 10
     
-    
     public subscript (row: Int, col: Int) -> CellState {
         get { return grid![row,col] }
         set { grid?[row,col] = newValue }
@@ -26,14 +25,11 @@ import UIKit
     
     @IBInspectable var gridWidth: CGFloat = CGFloat(2.0)
     
-    
-//    var grid = Grid(20, 20)
     var engine: StandardEngine!
     var grid: GridViewDataSource?
     
     
     override func draw(_ rect: CGRect) {
-        
         engine = StandardEngine.getEngine()
         self.size = engine.rows
 
@@ -92,12 +88,12 @@ import UIKit
                 let path = UIBezierPath(ovalIn: subRect)
                 
                 if let grid = self.grid {
-                switch grid[(i,j)].description() {
-                    case .alive: livingColor.setFill()
-                    case .empty: emptyColor.setFill()
-                    case .born: bornColor.setFill()
-                    case .died: diedColor.setFill()
-                }
+                    switch grid[(i,j)].description() {
+                        case .alive: livingColor.setFill()
+                        case .empty: emptyColor.setFill()
+                        case .born: bornColor.setFill()
+                        case .died: diedColor.setFill()
+                    }
                 }
                 
                 path.fill()
@@ -164,9 +160,5 @@ import UIKit
         let position = (row: Int(row), col: Int(col))
         return position
     }
-    
 }
-
-
-
 

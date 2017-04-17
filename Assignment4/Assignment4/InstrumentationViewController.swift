@@ -19,33 +19,73 @@ class InstrumentationViewController: UIViewController {
     
     var engine : EngineProtocol = StandardEngine.getEngine()
     
+    @IBAction func rowTextChanged(_ sender: UITextField) {
+        let val = Int(sender.text!)
+        if val != nil {
+            if val! < 10 {
+                updateGridSize("\(Int(engine.rows))")
+            } else if val != engine.rows {
+                updateGridSize(sender.text!)
+            }
+        } else {
+            updateGridSize("\(Int(engine.rows))")
+        }
+    }
+    
+    @IBAction func colTextChanged(_ sender: UITextField) {
+        let val = Int(sender.text!)
+        if val != nil {
+            if val! < 10 {
+                updateGridSize("\(Int(engine.rows))")
+            } else if val != engine.rows {
+                updateGridSize(sender.text!)
+            }
+        } else {
+            updateGridSize("\(Int(engine.rows))")
+        }
+    }
+    
+    
+    @IBAction func rowTextEnd(_ sender: UITextField) {
+        rowText.resignFirstResponder()
+    }
+    
+    
+    @IBAction func colTextEnd(_ sender: UITextField) {
+        colText.resignFirstResponder()
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        rowText.resignFirstResponder()
+        colText.resignFirstResponder()
+    }
+    
+    
     @IBAction func colStepper(_ sender: UIStepper) {
-        updateSize(sender)
-        
-        refreshToggle.isOn = false
-        engine.refreshRate = 0.0
+        updateGridSize("\(Int(sender.value))")
     }
     
     
     @IBAction func rowStepper(_ sender: UIStepper) {
-        updateSize(sender)
+        updateGridSize("\(Int(sender.value))")
+    }
+    
+    
+    func updateGridSize(_ value : String) {
+        rowText.text = value
+        colText.text = value
+        
+        rowStepper.value = Double(value)!
+        colStepper.value = Double(value)!
+        
+        StandardEngine.rowsInstance = Int(value)!
+        StandardEngine.colsInstance = Int(value)!
+        engine = StandardEngine.getEngine()
         
         refreshToggle.isOn = false
         engine.refreshRate = 0.0
     }
-    
-    func updateSize(_ sender: UIStepper) {
-        rowText.text = "\(Int(sender.value))"
-        colText.text = "\(Int(sender.value))"
-        
-        rowStepper.value = sender.value
-        colStepper.value = sender.value
-        
-        StandardEngine.rowsSingleton = Int(sender.value)
-        StandardEngine.colsSingleton = Int(sender.value)
-        engine = StandardEngine.getEngine()
-    }
-    
     
     
     
@@ -56,6 +96,7 @@ class InstrumentationViewController: UIViewController {
             engine.refreshRate = 0.0
         }
     }
+    
     
     @IBAction func changeRefreshSpeed(_ sender: UISlider) {
         if refreshToggle.isOn {
@@ -71,9 +112,8 @@ class InstrumentationViewController: UIViewController {
         super.viewDidLoad()
         rowText.text = "\(Int(rowStepper.value))"
         colText.text = "\(Int(colStepper.value))"
-        // Do any additional setup after loading the view.
+        
     }
-
     
     
     override func didReceiveMemoryWarning() {
