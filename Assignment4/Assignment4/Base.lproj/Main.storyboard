@@ -238,7 +238,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.10000000000000001" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="mLR-iz-USa">
-                                                <rect key="frame" x="52.5" y="139.5" width="194" height="31"/>
+                                                <rect key="frame" x="73" y="140" width="154" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="jhv-fP-MLH"/>
+                                                </constraints>
                                                 <connections>
                                                     <action selector="changeRefreshSpeed:" destination="RVg-Df-Ifh" eventType="valueChanged" id="70G-D2-u1L"/>
                                                 </connections>
@@ -250,7 +253,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R7N-Id-fpc">
-                                                <rect key="frame" x="195.5" y="177.5" width="51" height="31"/>
+                                                <rect key="frame" x="215" y="177.5" width="12" height="31"/>
                                                 <connections>
                                                     <action selector="toggleRefresh:" destination="RVg-Df-Ifh" eventType="valueChanged" id="RkL-Xy-omv"/>
                                                 </connections>
@@ -262,13 +265,13 @@
                                                 </connections>
                                             </stepper>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cc4-Fe-uQ8">
-                                                <rect key="frame" x="224" y="158" width="20.5" height="12"/>
+                                                <rect key="frame" x="228.5" y="149" width="20.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOY-5g-GHO">
-                                                <rect key="frame" x="54" y="159" width="25" height="13.5"/>
+                                                <rect key="frame" x="46.5" y="148" width="25" height="13.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -281,22 +284,22 @@
                                             <constraint firstAttribute="width" secondItem="VHs-f3-3OZ" secondAttribute="height" multiplier="1:1" id="3iE-Q6-Fo9"/>
                                             <constraint firstItem="rMT-NJ-45K" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" constant="45" id="9qz-4X-vHz"/>
                                             <constraint firstItem="7NM-nZ-qdk" firstAttribute="top" secondItem="VHs-f3-3OZ" secondAttribute="top" constant="20" id="DwA-nU-eic"/>
-                                            <constraint firstItem="XOY-5g-GHO" firstAttribute="top" secondItem="dvG-um-ZnG" secondAttribute="bottom" constant="64" id="Fwl-Pl-9hU"/>
+                                            <constraint firstItem="mLR-iz-USa" firstAttribute="leading" secondItem="XOY-5g-GHO" secondAttribute="trailing" constant="3.5" id="F5I-MQ-v8l"/>
+                                            <constraint firstItem="XOY-5g-GHO" firstAttribute="top" secondItem="dvG-um-ZnG" secondAttribute="bottom" constant="53" id="Fwl-Pl-9hU"/>
                                             <constraint firstItem="rMT-NJ-45K" firstAttribute="top" secondItem="sPc-Aq-Wzc" secondAttribute="bottom" constant="15" id="Iwz-Nh-FKk"/>
                                             <constraint firstItem="01n-jm-IXq" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" constant="-30" id="OMm-ib-Ssp"/>
                                             <constraint firstItem="J0a-LE-Ahf" firstAttribute="top" secondItem="dvG-um-ZnG" secondAttribute="bottom" constant="25" id="ObQ-R4-nK8"/>
                                             <constraint firstItem="dvG-um-ZnG" firstAttribute="top" secondItem="7NM-nZ-qdk" secondAttribute="bottom" constant="15" id="XvC-ac-Stv"/>
                                             <constraint firstItem="sPc-Aq-Wzc" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" constant="45" id="Yo7-hm-gJM"/>
-                                            <constraint firstItem="cc4-Fe-uQ8" firstAttribute="top" secondItem="rMT-NJ-45K" secondAttribute="bottom" constant="65" id="Ywh-Ii-PWt"/>
+                                            <constraint firstItem="cc4-Fe-uQ8" firstAttribute="top" secondItem="rMT-NJ-45K" secondAttribute="bottom" constant="56" id="Ywh-Ii-PWt"/>
                                             <constraint firstItem="dvG-um-ZnG" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" constant="-45" id="csz-rk-Imf"/>
-                                            <constraint firstItem="XOY-5g-GHO" firstAttribute="leading" secondItem="mLR-iz-USa" secondAttribute="leading" id="f67-gr-o46"/>
                                             <constraint firstItem="J0a-LE-Ahf" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" id="ilR-s5-ZzA"/>
                                             <constraint firstItem="mLR-iz-USa" firstAttribute="top" secondItem="J0a-LE-Ahf" secondAttribute="bottom" constant="5" id="kqS-DR-QpS"/>
+                                            <constraint firstItem="cc4-Fe-uQ8" firstAttribute="leading" secondItem="mLR-iz-USa" secondAttribute="trailing" constant="3.5" id="lJk-70-wG8"/>
                                             <constraint firstItem="mLR-iz-USa" firstAttribute="trailing" secondItem="R7N-Id-fpc" secondAttribute="trailing" id="m8V-kN-azA"/>
                                             <constraint firstItem="01n-jm-IXq" firstAttribute="top" secondItem="mLR-iz-USa" secondAttribute="bottom" constant="18" id="mGO-9j-EMB"/>
                                             <constraint firstItem="R7N-Id-fpc" firstAttribute="top" secondItem="mLR-iz-USa" secondAttribute="bottom" constant="8" id="pYT-MM-1Wd"/>
                                             <constraint firstItem="sPc-Aq-Wzc" firstAttribute="top" secondItem="VHs-f3-3OZ" secondAttribute="top" constant="20" id="peG-hQ-hGH"/>
-                                            <constraint firstItem="cc4-Fe-uQ8" firstAttribute="trailing" secondItem="mLR-iz-USa" secondAttribute="trailing" id="zSh-PT-D9m"/>
                                             <constraint firstItem="7NM-nZ-qdk" firstAttribute="centerX" secondItem="VHs-f3-3OZ" secondAttribute="centerX" constant="-45" id="zUo-Mq-ThZ"/>
                                         </constraints>
                                     </view>
