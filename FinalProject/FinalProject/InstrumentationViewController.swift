@@ -34,6 +34,48 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         loadData(finalProjectURL)
         
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+        let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(InstrumentationViewController.addRowItem))
+        navigationItem.rightBarButtonItem = addBarButton
+    }
+    
+    
+    func addRowItem(){
+        let alertController = UIAlertController(
+            title: "New Pattern",
+            message: "Enter pattern name:",
+            preferredStyle: .alert
+        )
+        
+        let confirmAction = UIAlertAction(title: "Create", style: .default) { (_) in
+            if let field = alertController.textFields?[0] {
+                if let text = field.text {
+                    if !InstrumentationViewController.tableTitles.contains(text) {
+                        InstrumentationViewController.tableTitles.append(text)
+                        InstrumentationViewController.gridStates[text] = []
+                        self.tableView.beginUpdates()
+                        self.tableView.insertRows(at: [IndexPath(row: InstrumentationViewController.tableTitles.count-1, section: 0)], with: .automatic)
+                        self.tableView.endUpdates()
+                    } else {
+                        let nameTakenAlert = UIAlertController(title: "Error", message:
+                            "\"\(text)\" already exsits", preferredStyle: UIAlertControllerStyle.alert)
+                        nameTakenAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                        self.present(nameTakenAlert, animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        alertController.addTextField { (textField) in textField.placeholder = "" }
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
 
     
     func loadData(_ link:String) {
