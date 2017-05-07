@@ -13,6 +13,8 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
     @IBOutlet weak var gridView: GridView!
     
     var engine: StandardEngine!
+    var currentGridData:[[Int]]?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     public subscript (row: Int, col: Int) -> CellState {
         get { return engine.grid[row,col] }
@@ -38,6 +40,56 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
             object: nil,
             userInfo: ["engine" : self]
         )
+    }
+    
+    
+    @IBAction func saveBtnClicked(_ sender: Any) {
+        currentGridData = []
+        for i in 0..<engine.rows {
+            for j in 0..<engine.cols {
+                if engine.grid[i, j] == CellState.alive || engine.grid[i, j] ==  CellState.born  {
+                    currentGridData?.append([i,j])
+                }
+            }
+        }
+        
+        let alertController = UIAlertController(title: "Save Pattern", message: "Please enter pattern name:", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Save", style: .default) { (_) in
+            if let field = alertController.textFields?[0] {
+                if let text = field.text {
+                    if !InstrumentationViewController.tableTitles.contains(text) {
+                        InstrumentationViewController.tableTitles.append(text)
+                        InstrumentationViewController.gridStates[text] = self.currentGridData
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+                    } else {
+                        let nameTakenAlert = UIAlertController(title: "Error", message:
+                            "\"\(text)\" already exsits", preferredStyle: UIAlertControllerStyle.alert)
+                        nameTakenAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                        self.present(nameTakenAlert, animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        alertController.addTextField { (textField) in textField.placeholder = "" }
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.pattern = self.currentGridData!
+        
+        let file = "data"
+        let text = "[{ \"saved\" : \(currentGridData!.description)}]"
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let path = dir.appendingPathComponent(file)
+            do {
+                try text.write(to: path, atomically: false, encoding: String.Encoding.utf8)
+            } catch {}
+        }
     }
     
     

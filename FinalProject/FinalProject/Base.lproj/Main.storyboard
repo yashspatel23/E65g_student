@@ -74,6 +74,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaR-24-Haf">
                                         <rect key="frame" x="146.5" y="118" width="34" height="30"/>
                                         <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveBtnClicked:" destination="Phx-fU-DTY" eventType="touchUpInside" id="w4d-Ub-pkG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.15071168664383561" colorSpace="calibratedRGB"/>

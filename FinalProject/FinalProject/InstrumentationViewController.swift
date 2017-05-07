@@ -31,8 +31,14 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         tableView.delegate = self
         tableView.dataSource = self
         
-        loadData(finalProjectURL)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(reloadTableViewData),
+            name: NSNotification.Name(rawValue: "load"),
+            object: nil
+        )
         
+        loadData(finalProjectURL)
     }
     
     
