@@ -179,14 +179,31 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="RVg-Df-Ifh" kind="relationship" relationship="viewControllers" id="8NJ-xd-7wr"/>
                         <segue destination="Phx-fU-DTY" kind="relationship" relationship="viewControllers" id="jP3-vl-SkU"/>
                         <segue destination="zaH-NA-rNp" kind="relationship" relationship="viewControllers" id="242-uN-OZG"/>
+                        <segue destination="t7E-qm-8Zd" kind="relationship" relationship="viewControllers" id="1TR-hZ-y7o"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="luW-up-DrK">
+            <objects>
+                <navigationController id="t7E-qm-8Zd" userLabel="Navigation Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="MwZ-W7-Tbi" userLabel="Instrumentation"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zUv-YG-rBH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="RVg-Df-Ifh" kind="relationship" relationship="rootViewController" id="TZ3-lr-pf7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f1T-bF-jGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="822" y="-227"/>
         </scene>
         <!--Instrumentation-->
         <scene sceneID="Hlw-XE-iCf">
@@ -201,10 +218,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVU-u2-ELW" userLabel="Content Area">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VHs-f3-3OZ">
-                                        <rect key="frame" x="0.0" y="299" width="375" height="299"/>
+                                        <rect key="frame" x="0.0" y="277" width="375" height="277"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rows" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7NM-nZ-qdk">
                                                 <rect key="frame" x="110" y="20" width="65" height="30"/>
@@ -311,20 +328,20 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lEr-Ab-JJp">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="299"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="277"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KM0-2D-SGr">
-                                                <rect key="frame" x="0.0" y="50" width="375" height="249"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="277"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KqM-jl-tef">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="basicCell" id="KqM-jl-tef" userLabel="basicCell">
                                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KqM-jl-tef" id="Y0Y-K5-ha1">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yj-Ss-u5h">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yj-Ss-u5h">
                                                                     <rect key="frame" x="8" y="8" width="359" height="27.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -344,7 +361,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="KM0-2D-SGr" firstAttribute="top" secondItem="lEr-Ab-JJp" secondAttribute="top" constant="50" id="4DM-8Q-UMx"/>
+                                            <constraint firstItem="KM0-2D-SGr" firstAttribute="top" secondItem="lEr-Ab-JJp" secondAttribute="top" id="4DM-8Q-UMx"/>
                                             <constraint firstItem="KM0-2D-SGr" firstAttribute="leading" secondItem="lEr-Ab-JJp" secondAttribute="leading" id="4H6-7c-qae"/>
                                             <constraint firstAttribute="bottom" secondItem="KM0-2D-SGr" secondAttribute="bottom" id="MgM-gb-GTr"/>
                                             <constraint firstAttribute="trailing" secondItem="KM0-2D-SGr" secondAttribute="trailing" id="Yt6-AP-WmD"/>
@@ -373,6 +390,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Instrumentation" image="Instrumentation" id="XL7-sz-0FD" userLabel="Instrumentation"/>
+                    <navigationItem key="navigationItem" id="pKZ-eN-E7L"/>
                     <connections>
                         <outlet property="colStepper" destination="rMT-NJ-45K" id="314-4B-SNV"/>
                         <outlet property="colText" destination="dvG-um-ZnG" id="uc4-Il-0Jy"/>
@@ -385,7 +403,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mDr-dy-2Td" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="821.60000000000002" y="-179.46026986506749"/>
+            <point key="canvasLocation" x="1694" y="-227"/>
         </scene>
     </scenes>
     <resources>

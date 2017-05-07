@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InstrumentationViewController: UIViewController {
+class InstrumentationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var rowText: UITextField!
     @IBOutlet weak var rowStepper: UIStepper!
@@ -18,6 +18,114 @@ class InstrumentationViewController: UIViewController {
     @IBOutlet weak var refreshToggle: UISwitch!
     
     @IBOutlet weak var tableView: UITableView!
+    static var tableTitles:[String] = []
+    static var gridStates:[String: [[Int]]] = [:]
+    
+    var finalProjectURL: String = "https://dl.dropboxusercontent.com/u/7544475/S65g.json"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        rowText.text = "\(Int(rowStepper.value))"
+        colText.text = "\(Int(colStepper.value))"
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        loadData(finalProjectURL)
+        
+    }
+
+    
+    func loadData(_ link:String) {
+        let url:URL = URL(string: link)!
+        let session = URLSession.shared
+        
+        let request = NSMutableURLRequest(url: url)
+        request.httpMethod = "GET"
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
+        
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, resp, error) in
+            guard let _:Data = data, let _:URLResponse = resp , error == nil else {
+                print("error getting JSON data")
+                return
+            }
+            self.parseJSON(data!)
+        })
+        task.resume()
+    }
+    
+    
+    func parseJSON(_ data: Data) {
+        let json: Any?
+        do { json = try JSONSerialization.jsonObject(with: data, options: []) }
+        catch { return }
+        
+        guard let dataArray = json as? NSArray else { return }
+        
+        if let shapeArray = json as? NSArray {
+            for i in 0 ..< dataArray.count {
+                if let item = shapeArray[i] as? NSDictionary {
+                    if let title = item["title"] as? String, let gridState = item["contents"] as? [[Int]] {
+                        if !InstrumentationViewController.tableTitles.contains(title) {
+                            InstrumentationViewController.tableTitles.append(title)
+                            InstrumentationViewController.gridStates[title] = gridState
+                        } else {
+                            let titleExistsAlert = UIAlertController(
+                                title: "Error",
+                                message: "\"\(title)\" already exists",
+                                preferredStyle: UIAlertControllerStyle.alert
+                            )
+                            titleExistsAlert.addAction(UIAlertAction(
+                                title: "Dismiss",
+                                style: UIAlertActionStyle.default,handler: nil
+                            ))
+                            self.present(titleExistsAlert, animated: true, completion: nil)
+                        }
+                    }
+                }
+            }
+        }
+        DispatchQueue.main.async(execute: { self.reloadTableViewData() })
+    }
+    
+    func reloadTableViewData() { self.tableView.reloadData() }
+    
+    
+    
+    
+    /************************** TABLEVIEW DATASOURCE METHODS ************************/
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return InstrumentationViewController.tableTitles.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "basicCell", for: indexPath)
+        let label = cell.contentView.subviews.first as! UILabel
+        label.text = InstrumentationViewController.tableTitles[indexPath.item]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool { return true }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {}
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {}
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool { return true }
+    /************************** END TABLEVIEW DATASOURCE METHODS ************************/
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -115,12 +223,6 @@ class InstrumentationViewController: UIViewController {
     }
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        rowText.text = "\(Int(rowStepper.value))"
-        colText.text = "\(Int(colStepper.value))"
-        
-    }
     
     
     override func didReceiveMemoryWarning() {
