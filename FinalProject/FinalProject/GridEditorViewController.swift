@@ -79,6 +79,17 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
             }
         }
         InstrumentationViewController.gridStates[self.gridTitle!] = self.gridData
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.pattern = self.gridData!
+        let file = "data"
+        let text = "[{ \"saved\" : \(gridData!.description)}]"
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let path = dir.appendingPathComponent(file)
+            do {
+                try text.write(to: path, atomically: false, encoding: String.Encoding.utf8)
+            } catch {}
+        }
     }
     
     

@@ -12,12 +12,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var pattern:[[Int]] = []
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
-    }
+    
+//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//        // Override point for customization after application launch.
+//        return true
+//    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -42,5 +41,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    
+    
+    
+    
+    /*********** GRAD REQUIREMENT - SAVE GRID STATE ACROSS INSTANCES *********/
+    var userDefaults: UserDefaults?
+    var pattern:[[Int]] = []
+    
+    func convertData(text: String) -> Any? {
+        if let data = text.data(using: .utf8) {
+            do { return try JSONSerialization.jsonObject(with: data, options: []) }
+            catch { print(error.localizedDescription) }
+        }
+        return nil
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let file = "data"
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            
+            let path = dir.appendingPathComponent(file)
+            
+            do {
+                let data = try String(contentsOf: path, encoding: String.Encoding.utf8)
+                let json = convertData(text: data)
+                if let dataArray = json as? NSArray {
+                    if let nameDict = dataArray[0] as? NSDictionary {
+                        if let array = nameDict["saved"] as? [[Int]] { pattern = array }
+                    }
+                }
+            }
+            catch { print("error reading file") }
+        }
+        
+        userDefaults = UserDefaults.standard
+        userDefaults?.setValue(pattern, forKey: "pattern")
+        userDefaults?.synchronize()
+        return true
+    }
 }
 

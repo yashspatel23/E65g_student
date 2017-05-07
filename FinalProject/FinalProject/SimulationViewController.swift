@@ -14,13 +14,41 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
     
     var engine: StandardEngine!
     var currentGridData:[[Int]]?
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    public subscript (row: Int, col: Int) -> CellState {
-        get { return engine.grid[row,col] }
-        set { engine.grid[row,col] = newValue }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        engine = StandardEngine.getEngine()
+        engine.delegate = self
+        gridView.grid = self
+        gridView.size = engine.rows
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let userDefaults = appDelegate.userDefaults
+        if userDefaults?.value(forKey: "pattern") != nil {
+            loadGridState(gridArray:userDefaults?.value(forKey: "pattern") as? [[Int]])
+        }
+        
+        
+        NotificationCenter.default.addObserver(
+            forName: Notification.Name(rawValue: "GridUpdated"),
+            object: nil,
+            queue: nil) { (n) in
+                self.gridView.setNeedsDisplay()
+        }
+        
+        NotificationCenter.default.addObserver(
+            forName: Notification.Name(rawValue: "GridSizeUpdated"),
+            object: nil,
+            queue: nil) { (n) in
+                self.engine = StandardEngine.engine
+                self.gridView.grid = self
+                self.gridView.size = self.engine.rows
+                self.gridView.setNeedsDisplay()
+        }
     }
-    
+
     
     @IBAction func stepButton(_ sender: Any) {
         _ = engine.step()
@@ -96,32 +124,24 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
     func engineDidUpdate(_ withGrid: GridProtocol) {
         self.gridView.setNeedsDisplay()
     }
+
     
+    func loadGridState(gridArray:[[Int]]?) {
+        for i in 0..<engine.rows {
+            for j in 0..<engine.cols {
+                engine.grid[i, j] = CellState.empty
+            }
+        }
+        for pos in gridArray! {
+            engine.grid[pos[0], pos[1]] = CellState.born
+        }
+        self.gridView.setNeedsDisplay()
+    }
+
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        engine = StandardEngine.getEngine()
-        engine.delegate = self
-        gridView.grid = self
-        gridView.size = engine.rows
-        
-        NotificationCenter.default.addObserver(
-            forName: Notification.Name(rawValue: "GridUpdated"),
-            object: nil,
-            queue: nil) { (n) in
-                self.gridView.setNeedsDisplay()
-        }
-        
-        NotificationCenter.default.addObserver(
-            forName: Notification.Name(rawValue: "GridSizeUpdated"),
-            object: nil,
-            queue: nil) { (n) in
-                self.engine = StandardEngine.engine
-                self.gridView.grid = self
-                self.gridView.size = self.engine.rows
-                self.gridView.setNeedsDisplay()
-        }
+    public subscript (row: Int, col: Int) -> CellState {
+        get { return engine.grid[row,col] }
+        set { engine.grid[row,col] = newValue }
     }
     
     
@@ -132,18 +152,5 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
