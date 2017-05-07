@@ -17,6 +17,13 @@ class InstrumentationViewController: UIViewController {
     @IBOutlet weak var refreshSpeed: UISlider!
     @IBOutlet weak var refreshToggle: UISwitch!
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    
+    
+    
+    
+    
     var engine : EngineProtocol = StandardEngine.getEngine()
     
     @IBAction func rowTextChanged(_ sender: UITextField) {
