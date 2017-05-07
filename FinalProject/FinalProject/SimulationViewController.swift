@@ -25,6 +25,22 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
     }
     
     
+    @IBAction func resetBtnClicked(_ sender: Any) {
+        for i in 0..<engine.rows {
+            for j in 0..<engine.cols {
+                engine.grid[i,j] = CellState.empty
+            }
+        }
+        self.gridView.setNeedsDisplay()
+        
+        NotificationCenter.default.post(
+            name: Notification.Name(rawValue: "GridUpdated"),
+            object: nil,
+            userInfo: ["engine" : self]
+        )
+    }
+    
+    
     func engineDidUpdate(_ withGrid: GridProtocol) {
         self.gridView.setNeedsDisplay()
     }

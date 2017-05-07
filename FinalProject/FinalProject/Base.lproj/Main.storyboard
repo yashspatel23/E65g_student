@@ -64,6 +64,17 @@
                                             <action selector="stepButton:" destination="Phx-fU-DTY" eventType="touchUpInside" id="AuU-2y-APe"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBQ-RZ-hba">
+                                        <rect key="frame" x="92.5" y="118" width="39" height="30"/>
+                                        <state key="normal" title="Reset"/>
+                                        <connections>
+                                            <action selector="resetBtnClicked:" destination="Phx-fU-DTY" eventType="touchUpInside" id="k68-9m-qq6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaR-24-Haf">
+                                        <rect key="frame" x="146.5" y="118" width="34" height="30"/>
+                                        <state key="normal" title="Save"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.15071168664383561" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -71,8 +82,12 @@
                                     <constraint firstItem="BzU-t5-dcR" firstAttribute="leading" secondItem="IUL-0t-pnk" secondAttribute="leading" constant="-8" id="DS3-SV-XDA"/>
                                     <constraint firstItem="BzU-t5-dcR" firstAttribute="width" secondItem="tEE-g3-Mqt" secondAttribute="width" multiplier="0.8" priority="750" id="HfK-Mz-k8k"/>
                                     <constraint firstItem="BzU-t5-dcR" firstAttribute="height" relation="lessThanOrEqual" secondItem="tEE-g3-Mqt" secondAttribute="height" multiplier="0.8" id="JNW-EL-BHp"/>
+                                    <constraint firstItem="BzU-t5-dcR" firstAttribute="top" secondItem="jBQ-RZ-hba" secondAttribute="bottom" constant="1" id="Juz-U8-0Pf"/>
                                     <constraint firstItem="BzU-t5-dcR" firstAttribute="height" secondItem="tEE-g3-Mqt" secondAttribute="height" multiplier="0.8" priority="750" id="SoN-tL-V3H"/>
                                     <constraint firstItem="BzU-t5-dcR" firstAttribute="width" relation="lessThanOrEqual" secondItem="tEE-g3-Mqt" secondAttribute="width" multiplier="0.8" id="ZpF-Hg-Ava"/>
+                                    <constraint firstItem="BzU-t5-dcR" firstAttribute="top" secondItem="zaR-24-Haf" secondAttribute="bottom" constant="1" id="dwI-pd-leb"/>
+                                    <constraint firstItem="jBQ-RZ-hba" firstAttribute="leading" secondItem="IUL-0t-pnk" secondAttribute="trailing" constant="15" id="jKD-z8-XZ8"/>
+                                    <constraint firstItem="zaR-24-Haf" firstAttribute="leading" secondItem="jBQ-RZ-hba" secondAttribute="trailing" constant="15" id="jgb-2K-R1h"/>
                                     <constraint firstItem="BzU-t5-dcR" firstAttribute="centerX" secondItem="tEE-g3-Mqt" secondAttribute="centerX" id="ocU-iv-d8C"/>
                                     <constraint firstItem="BzU-t5-dcR" firstAttribute="top" secondItem="IUL-0t-pnk" secondAttribute="bottom" constant="1" id="rrd-LO-Giv"/>
                                 </constraints>
