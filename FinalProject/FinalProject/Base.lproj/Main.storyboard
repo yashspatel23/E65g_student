@@ -208,7 +208,7 @@
         <!--Instrumentation-->
         <scene sceneID="Hlw-XE-iCf">
             <objects>
-                <viewController id="RVg-Df-Ifh" userLabel="Instrumentation" customClass="InstrumentationViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Instrumentation" id="RVg-Df-Ifh" userLabel="Instrumentation" customClass="InstrumentationViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g91-Tn-Pbw"/>
                         <viewControllerLayoutGuide type="bottom" id="Oyx-TP-KC2"/>
@@ -355,6 +355,9 @@
                                                                 <constraint firstItem="0Yj-Ss-u5h" firstAttribute="trailing" secondItem="Y0Y-K5-ha1" secondAttribute="trailingMargin" id="cgi-s2-cMm"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
+                                                        <connections>
+                                                            <segue destination="BHi-B8-qIH" kind="show" id="hXu-Ie-2Z2"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
@@ -403,7 +406,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mDr-dy-2Td" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1694" y="-227"/>
+            <point key="canvasLocation" x="1655" y="-228"/>
+        </scene>
+        <!--Grid Editor View Controller-->
+        <scene sceneID="cp9-36-pWq">
+            <objects>
+                <viewController id="BHi-B8-qIH" userLabel="Grid Editor View Controller" customClass="GridEditorViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l0s-FG-n9y"/>
+                        <viewControllerLayoutGuide type="bottom" id="iFT-eU-VLj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zzI-Cj-Z15">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YYk-v5-aag">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdD-ZP-iex" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
+                                        <rect key="frame" x="37" y="127" width="300" height="300"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="rdD-ZP-iex" secondAttribute="height" multiplier="1:1" id="VwF-Oq-eBU"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="rdD-ZP-iex" firstAttribute="centerY" secondItem="YYk-v5-aag" secondAttribute="centerY" id="FR8-Ez-jmG"/>
+                                    <constraint firstItem="rdD-ZP-iex" firstAttribute="width" relation="lessThanOrEqual" secondItem="YYk-v5-aag" secondAttribute="width" multiplier="0.8" id="Tvg-Ch-9nE"/>
+                                    <constraint firstItem="rdD-ZP-iex" firstAttribute="height" relation="lessThanOrEqual" secondItem="YYk-v5-aag" secondAttribute="height" multiplier="0.8" id="Zbp-RU-8c1"/>
+                                    <constraint firstItem="rdD-ZP-iex" firstAttribute="centerX" secondItem="YYk-v5-aag" secondAttribute="centerX" id="dAJ-eD-5pD"/>
+                                    <constraint firstItem="rdD-ZP-iex" firstAttribute="height" secondItem="YYk-v5-aag" secondAttribute="height" multiplier="0.8" priority="750" id="dGM-vw-C0X"/>
+                                    <constraint firstItem="rdD-ZP-iex" firstAttribute="width" secondItem="YYk-v5-aag" secondAttribute="width" multiplier="0.8" priority="750" id="hAJ-3D-uwN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YYk-v5-aag" firstAttribute="leading" secondItem="zzI-Cj-Z15" secondAttribute="leading" id="4q6-o0-eAg"/>
+                            <constraint firstItem="iFT-eU-VLj" firstAttribute="top" secondItem="YYk-v5-aag" secondAttribute="bottom" id="6YE-Dt-cZd"/>
+                            <constraint firstAttribute="trailing" secondItem="YYk-v5-aag" secondAttribute="trailing" id="Xwm-QC-W2g"/>
+                            <constraint firstItem="YYk-v5-aag" firstAttribute="top" secondItem="l0s-FG-n9y" secondAttribute="bottom" id="vd5-KX-w1N"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gridView" destination="rdD-ZP-iex" id="cOr-XC-zVB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2HJ-3C-vZO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2484" y="-228"/>
         </scene>
     </scenes>
     <resources>

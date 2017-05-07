@@ -120,7 +120,21 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     
     
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cancelBtn = UIBarButtonItem()
+        cancelBtn.title = "Cancel"
+        navigationItem.backBarButtonItem = cancelBtn
+        
+        let indexPath = tableView.indexPathForSelectedRow
+        if let indexPath = indexPath {
+            let title = InstrumentationViewController.tableTitles[indexPath.row]
+            let gridState = InstrumentationViewController.gridStates[title]
+            if let gevc = segue.destination as? GridEditorViewController {
+                gevc.gridTitle = title
+                gevc.gridData = gridState
+            }
+        }
+    }
     
     
     

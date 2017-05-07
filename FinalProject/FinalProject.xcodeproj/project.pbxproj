@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D325964E1EBF0BE20098CDD9 /* GridEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D325964D1EBF0BE20098CDD9 /* GridEditorViewController.swift */; };
 		D3EC40671EBED73800E1B759 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EC40601EBED73800E1B759 /* Grid.swift */; };
 		D3EC40681EBED73800E1B759 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EC40611EBED73800E1B759 /* GridView.swift */; };
 		D3EC40691EBED73800E1B759 /* InstrumentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EC40621EBED73800E1B759 /* InstrumentationViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D325964D1EBF0BE20098CDD9 /* GridEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridEditorViewController.swift; sourceTree = "<group>"; };
 		D3EC40601EBED73800E1B759 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		D3EC40611EBED73800E1B759 /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		D3EC40621EBED73800E1B759 /* InstrumentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentationViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				FBAD2E2F1E2BE417008207C0 /* Assets.xcassets */,
 				FBAD2E311E2BE417008207C0 /* LaunchScreen.storyboard */,
 				FBAD2E341E2BE417008207C0 /* Info.plist */,
+				D325964D1EBF0BE20098CDD9 /* GridEditorViewController.swift */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D325964E1EBF0BE20098CDD9 /* GridEditorViewController.swift in Sources */,
 				FBAD2E2B1E2BE417008207C0 /* SecondViewController.swift in Sources */,
 				FBAD2E271E2BE417008207C0 /* AppDelegate.swift in Sources */,
 				FBAD2E291E2BE417008207C0 /* FirstViewController.swift in Sources */,
