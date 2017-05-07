@@ -24,6 +24,15 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
         engine.delegate = self
         gridView.grid = self
         gridView.size = engine.rows
+        
+        NotificationCenter.default.addObserver(
+            forName: Notification.Name(rawValue: "GridUpdated"),
+            object: nil,
+            queue: nil) { (n) in
+                self.gridView.setNeedsDisplay()
+        }
+        
+        
         loadGridData()
     }
     
@@ -55,12 +64,11 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
             navControl.popViewController(animated: true)
         }
         
-        let nc = NotificationCenter.default
-        let name = Notification.Name(rawValue: "EngineUpdate")
-        let n = Notification(name: name,
-                             object: nil,
-                             userInfo: ["engine" : self])
-        nc.post(n)
+        NotificationCenter.default.post(
+            name: Notification.Name(rawValue: "GridUpdated"),
+            object: nil,
+            userInfo: ["engine" : self]
+        )
         
         self.gridData = []
         for i in 0..<self.gridView.size {
